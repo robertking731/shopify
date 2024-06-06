@@ -1,0 +1,369 @@
+{%- assign search_url = routes.search_url -%}
+<div class="admin_t4_tools t4_tools_btns">
+  <button class="admin_t4_tools_btn"><i class="las la-tools"></i><i class="las la-times"></i></button>
+  <div class="admin_t4_tools__content">
+    <ul>
+      <li><a href="https://the4.gitbook.io/kalles-4.0/?locale=en" class="admin_t4_tools__item admin_t4_tools__item--separated" target="_blank"><i class="las la-book mr__5"></i>View documentation</a></li>
+      <li><a class="admin_t4_tools__item" href="{{ search_url }}/?view=config"><svg viewBox="0 0 24 24" class="admin_t4_tools__svg"><use xlink:href="#scl_adt4ld"></use></svg><i class="las la-search mr__5"></i>Go to configs page</a></li>
+      <li><a class="admin_t4_tools__item" href="{{ search_url }}"><svg viewBox="0 0 24 24" class="admin_t4_tools__svg"><use xlink:href="#scl_adt4ld"></use></svg><i class="las la-search mr__5"></i>Go to search page to config</a></li>
+      {%- if settings.wishlist_type != "0" and settings.wishlist_type != "3" -%}<li><a class="admin_t4_tools__item" href="{{ search_url }}/?view=wishlist"><svg viewBox="0 0 24 24" class="admin_t4_tools__svg"><use xlink:href="#scl_adt4ld"></use></svg><i class="lar la-heart mr__5"></i>Go to wishlist page to config</a></li>{% endif -%}
+      {%- if settings.enable_compe %}<li><a class="admin_t4_tools__item" href="{{ search_url }}/?view=compare"><svg viewBox="0 0 24 24" class="admin_t4_tools__svg"><use xlink:href="#scl_adt4ld"></use></svg><i class="las la-sync mr__5"></i>Go to compare page to config</a></li>{% endif -%}
+    </ul>
+  </div>
+</div>
+<div id="adgliconsymbols" class="hide t4s-d-none"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="scl_adt4ld"><svg version="1.1" class="t4_L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve"><path d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50" transform="rotate(65.9135 50 50)"><animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform></path></svg></div>
+<style>
+  .t4_tools_btns {
+    position: fixed;
+    top: 35%;
+    right: 0;
+    z-index: 400;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    transition: all .25s ease-in-out;
+  }
+  .show_admin_t4_pp i,.admin_t4_tools_btn .la-times {
+    display: none;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+  .show_admin_t4_pp .la-times {display: inline-block;opacity: 1;}
+  .t4_tools_btns.on_show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  .admin_t4_tools_btn {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    height: 70px;
+    line-height: 1.2;
+    width: 80px;
+    transition: transform .3s ease .4s, background-color .25s ease;
+    backface-visibility: hidden;
+    perspective: 800px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    border: 4px double #fff;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
+    background-color: #008060;
+  }
+  .admin_t4_tools_btn:focus {
+    background-color: #004c3f;
+    color: #ffffff;
+    border-color: #fff;
+  }
+  .admin_t4_tools_btn i{font-size: 32px;}
+  .admin_t4_tools__content {
+    padding: 0.5em 0;
+    position: absolute;
+    width: 356px;
+    top: 76px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #d2d5d9;
+    box-shadow: 0 5px 30px 5px rgb(66 71 76 / 10%);
+    display: none;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+  .admin_t4_tools__content>ul {
+    list-style: none;padding: 0;
+  }
+  .admin_t4_tools__item {
+    position: relative;
+    width: 100%;
+    white-space: unset;
+    text-align: left;
+    padding-top: 11.25px;
+    padding-bottom: 11.25px;
+    line-height: 1;
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    border: 1px solid transparent;
+    border-left: 3px solid;
+    border-left-color: transparent;
+    color: #42474c;color: #202223;
+    transition-property: border-color, fill;
+    transition-duration: 300ms;
+  }
+  .admin_t4_tools__item i {
+    font-size: 12px;
+    padding: 3px;
+    border: 1px solid rgba(201, 204, 207, 1);
+    border-radius: 2px;
+    margin-right: 7px;
+    background-color: #f4f6f8;
+    color: #5c5f62;
+  }
+  .admin_t4_tools__item:focus {
+    border-left-color: #008060;
+    background-color: #f0f1f2;
+    color: #212326;
+  }
+  .admin_t4_tools__item--separated {
+    position: relative;
+  }
+  .admin_t4_tools__item--separated::after {
+    content: '';
+    position: absolute;
+    bottom: -1.625px;
+    border-bottom: 1px solid #d2d5d9;
+    left: calc(24px - 3px);
+    right: 24px;
+  }
+  svg.admin_t4_tools__svg {
+    width: 26px;
+    fill: #008060;
+    position: absolute;
+    left: 0;
+    top: 6px;
+    display: none;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+  .show_admin_t4_pp + .admin_t4_tools__content,.show_admin_t4_svg>svg.admin_t4_tools__svg {
+    display: block;
+    opacity: 1;
+  }
+
+
+  #alet_css_t4 {
+    font-size: 14px;
+    line-height: 1;
+    padding: 15px 10px;
+    border-radius: 3px;
+    background: rgba(0,0,0,.88);
+    box-shadow: 0 0 0 1px rgba(63,63,68,.05), 0 1px 3px 0 rgba(63,63,68,.15);
+    color: #fff;
+    max-width: 200px;
+    position: fixed;
+    right: 90px;
+    top: 46%;
+    margin-left: -100px;
+    opacity: 0;
+    transform: translateY(70px);
+    transition: transform .4s ease,opacity .4s ease;
+    pointer-events: none;
+    z-index: 500
+  }
+  #alet_css_t4.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  #purchase_codet4 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 5%;
+    background: #fff;
+    font-size: 13px;
+    color: #5c6ac4;
+    font-weight: 400;
+  }
+  #purchase_codet4 h2 {
+    font-weight: 700;
+    line-height: 1.1;
+    font-size: 40px;
+    margin: 0 0 10px;
+    color: #000639;
+  }
+  #purchase_codet4 a {
+    color: #222;
+  }
+  #purchase_codet4:not(.hidden):not(.hide) {
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  @media (-moz-touch-enabled: 0), (hover: hover) and (min-width: 1025px){
+    .admin_t4_tools__item:hover{
+      border-left-color: #008060;
+      background-color: #f0f1f2;
+      color: #212326;
+    }
+    .admin_t4_tools_btn:hover{
+      background-color: #004c3f;
+      color: #ffffff;
+      border-color: #fff;
+    }
+  }
+</style>
+
+<template id="t4s-temp-key-active">
+  <div class="content">
+    <div style="text-align: center">
+      <h3 style="font-weight: 800;">Welcome to Kalles 🎉 </h3>
+      <p>Follow these simple steps to activate your theme & get started:</p>
+    </div>
+    <div class="step-1" style="flex: 1 0 0%;">
+      <h4 style="font-weight: 700;font-size: 14px;margin-bottom: 5px;">Step 1: Activate theme</h4>
+      <ul>
+        <li><p>Go to "Theme Settings" &gt; "Theme Activate"</p></li>
+        <li><p>Enter your theme purchase code (license code) and save it </p></li>
+      </ul>
+      <p>👉 See detailed guide here: <a href="https://cdn.shopify.com/s/files/1/0715/0505/1965/files/active.png" target="_blank"> (Theme Activate)</a></p>
+    </div>
+    <div class="step-2" style="flex: 1 0 0%;">
+      <h4 style="font-weight: 700;font-size: 14px;margin-bottom: 5px;">Step 2: Import theme demos in a click</h4>
+      <ul>
+        <li><p style="margin-bottom: 10px; line-height: 1.5;">Simply <a href="https://kits.ecomrise.app/install?utm_source=Kalles&utm_medium=activate-kalles" target="_blank" rel="noopener noreferrer">install EcomRise (FREE)</a> to import demos and update the latest theme versions in the future, with just a single click. (Otherwise, you will need to import demos using JSON codes, which is much more complex & time-taking)</p></li>
+      </ul>
+      <p style="margin-bottom: 10px;">👉 See detailed guide here <a href="https://support.the4.co/articles/import-demo#1-one-click-demo-import-with-ecomrise" target="_blank"> (https://support.the4.co/articles/import-demo#1-one-click-demo-import-with-ecomrise)</a></p>
+    </div>    
+    <div class="recomen">
+      <h4 style="font-weight: 700;font-size: 20px;margin-bottom: 5px; margin-top: 30px;text-align: center">Recommended app:</h4>
+      <div class="recomen-app">
+        <div class="recomen-img">
+          <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0820/6975/0064/files/inte1.png?v=1702540680&width=575" alt="EComposer Page Builder" width="248" height="193">
+        </div>
+        <div class="recomen-info">
+          <p style="margin-bottom: 5px;line-height: 1.5;"><strong style="font-weight: 700">EComposer Page Builder - an advanced design tool for your website (drag-drop editor, 300+ pre-made templates, 20+ boost sales add-ons)</strong></p>
+          <p style="font-size: 12px;margin-bottom: 0; line-height: 16px;">🔥 Special offer: Install EComposer <a href="https://ecomposer.app/install?utm_source=Kalles&utm_medium=activate-kalles" target="_blank">HERE</a>. Then open chatbox icon in EComposer and leave a message with subject "Kalles+EComposer" to upgrade EComposer Standard Plan for Free 6 months (Save $114)</p>
+          <a class="recomen-btn" href="https://ecomposer.app/install?utm_source=Kalles&utm_medium=activate-kalles" target="_blank">Install EComposer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #purchase_codet4 {
+      overflow-y: auto;
+      text-align: left;
+      --text-color: #000;
+      --heading-color: #000;
+      color: var(--text-color);
+      font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    }
+    #purchase_codet4 .content {
+      max-width: 1000px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 19px;
+      overflow-y: auto;
+    }
+    #purchase_codet4 .content > *{
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+    #purchase_codet4 * {
+      letter-spacing: normal;
+    }
+    #purchase_codet4 .step-1, #purchase_codet4 .step-2 {
+      padding: 16px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0px 1px 0px 0px rgba(26, 26, 26, 0.07), 0px 1px 0px 0px rgba(204, 204, 204, 0.50) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset;
+    }
+    #purchase_codet4 ul {
+      list-style: initial;
+      padding-inline-start: 30px;
+      margin-bottom: 10px;
+    }
+    #purchase_codet4 li {
+      font-size: 14px;
+    }
+    #purchase_codet4 li p {
+      margin-bottom: 5px;
+    }
+    #purchase_codet4 .install-app {
+      padding: 10px;
+      background: #5c6ac4;
+      margin-bottom: 30px;
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+    }
+    .call-to-action {
+      text-align: left;
+    }
+    #purchase_codet4 a {
+      color: #5c6ac4;
+      position: relative;
+      text-decoration: underline;
+    }
+    #purchase_codet4 .recomen-app {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    #purchase_codet4 .recomen-img {
+      flex-shrink: 0;
+      width: 30%;
+      max-width: 248px;
+      position: relative;
+    }
+    #purchase_codet4 .recomen-img:after{
+      content: "";
+      padding-bottom: 77.82%;
+      width: 100%;
+      display: block;
+    }
+    #purchase_codet4 .recomen-img img {
+      position: absolute;
+      border-radius: 12px 0 0 12px;
+      object-position: center;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    #purchase_codet4 .recomen-info {
+      text-wrap: pretty;
+      flex-shrink: 0;
+      width: 70%;
+      max-width: 458px;
+      padding: 16px;
+      border-radius: 0 12px 12px 0;
+      background: #fff;
+      box-shadow: 0px 1px 0px 0px rgba(26, 26, 26, 0.07), 0px 1px 0px 0px rgba(204, 204, 204, 0.50) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset;
+    }
+    #purchase_codet4 .recomen-info .recomen-btn{
+      color: #222;
+      font-weight: 500;
+      padding: 3px 10px;
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 10px;
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: 0px 1px 0px 0px rgba(26, 26, 26, 0.07), 0px 1px 0px 0px rgba(204, 204, 204, 0.50) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset;
+    }
+    @media (max-width: 575px){      
+      #purchase_codet4 .recomen-img,
+      #purchase_codet4 .recomen-info {
+        width: 100%;
+        max-width: 100%;
+      }
+      #purchase_codet4 .recomen-img img {
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+      }
+      #purchase_codet4 .recomen-info {
+        border-radius: 0 0 12px 12px;
+      }
+    }
+  </style>
+</template>

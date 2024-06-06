@@ -1,0 +1,85 @@
+{% schema %}
+  {
+    "name": "Product Sub Description",
+    "settings": []
+  }
+{% endschema %}
+
+<div id="product-subdesc">
+    <h5>
+        <span style="color: #eaa794;">Doctor developed, Naturopath approved</span>
+    </h5>
+    <p>Designed with clinically studied ingredients for root causes of IBS. *Minimum course 6-8 weeks. Please avoid breaks in the middle.</p>
+    <div class="desc-list">
+        <div class="sub-desc-item">
+            <div class="inner-icon">
+                {%- render 'check-icon-pink' -%}
+            </div>
+            <div class="inner-text">
+                <p><strong>SIBO, FUNGUS, CANDIDA &amp; LEAKY GUT</strong></p>
+            </div>
+        </div>
+        <div class="sub-desc-item">
+            <div class="inner-icon">
+                {%- render 'check-icon-pink' -%}
+            </div>
+            <div class="inner-text">
+                <p>Effective for SIBO, fungus, candida</p>
+            </div>
+        </div>
+        <div class="sub-desc-item">
+            <div class="inner-icon">
+                {%- render 'check-icon-pink' -%}
+            </div>
+            <div class="inner-text">
+                <p>Addresses motility + biofilm busting</p>
+            </div>
+        </div>
+        <div class="sub-desc-item">
+            <div class="inner-icon">
+                {%- render 'check-icon-pink' -%}
+            </div>
+            <div class="inner-text">
+                <p>Reduces bloating</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+#product-subdesc {
+    width: 100%;
+font-family:"Nunito Sans", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+#product-subdesc h5, #product-subdesc p {
+color: rgb(81, 83, 74);
+}
+
+#product-subdesc .desc-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#product-subdesc .sub-desc-item {
+    display: flex;
+}
+#product-subdesc .inner-icon {
+width: 24px;
+height: 24px;
+padding: 0 10px;
+display: inline-table;
+}
+
+#product-subdesc .inner-icon svg {
+width: 24px;
+height: 24px;
+}
+
+#product-subdesc .inner-text p {
+ font-family:"Nunito Sans", sans-serif; 
+color: rgb(81, 83, 74);
+}
+</style>

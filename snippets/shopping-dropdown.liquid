@@ -1,0 +1,41 @@
+{%- liquid
+  assign ccount           = cart.item_count
+  assign ck_lumise        = 'ck_lumise'  
+  assign cart_url         = routes.cart_url
+  assign cart_change_url  = routes.cart_change_url
+  assign min_qty          = settings.min_qty | plus: 0
+  assign compare_tt_price = 0
+  assign total_price    = cart.total_price
+
+
+  assign gift_pr = all_products[settings.gift_wrap_pr]
+  assign gift_pr_id = gift_pr.id
+  assign arr_gift_id = cart.items | where: 'product_id', gift_pr_id
+  if cart.note != blank
+    assign style_add  = 't4s-d-none'
+    assign style_edit = ''
+  else
+    assign style_add  = ''
+    assign style_edit = 't4s-d-none'
+  endif
+-%}
+
+<div class="nav-dropdown-shopping">
+    <ul data-cart-items class="shopify-mini-cart-list">
+        {%- for item in cart.items -%}
+            {%- render 'cart-item', item: item, gift_pr_id: gift_pr_id, min_qty: min_qty, compare_tt_price: compare_tt_price, cart_change_url: cart_change_url, edit_item: edit_item, cur_code_enabled: cur_code_enabled, atc_ajax_enable: atc_ajax_enable, cart_ajax_enable: cart_ajax_enable -%}
+        {%- endfor -%}
+    </ul>
+    <div class="nav-dropdown-bottom">
+        <div class="dropdown-subtotal">
+            <div class="subtotal-text"><strong>Subtotal:</strong></div>
+            <div data-cart-prices >
+                <span class="t4s-cart__totalPrice">{{ total_price | money_with_currency }}</span>
+            </div>
+        </div>
+        <p>
+            <a href="/cart" class="button primary">VIEW CART</a>
+            <a href="/checkout" class="button secondary">CHECKOUT</a>
+        </p>
+    </div>
+</div>

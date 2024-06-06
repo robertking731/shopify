@@ -1,0 +1,235 @@
+<!-- sections/footer1.liquid -->
+{{ 'section.css' | asset_url | stylesheet_tag }}
+{{ 'general-block.css' | asset_url | stylesheet_tag }}
+{{ 'newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'icon-social.css' | asset_url | stylesheet_tag }}
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_heading",
+      "label": "Footer Heading",
+      "default": "Our Company"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_content",
+      "label": "Footer Content",
+      "default": "<p>This is an example of a rich text footer content section.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "color",
+      "id": "footer_background_color",
+      "label": "Footer Background Color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "footer_font_color",
+      "label": "Footer Font Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "footer_hover_color",
+      "label": "Footer Link Hover Color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "presets": [{
+    "name": "Custom Footer",
+    "category": "Footer"
+  }]
+}
+{% endschema %}
+
+<footer
+  class="site-footer custom-footer"
+  style="background-color: {{ section.settings.footer_background_color }}; color: {{ section.settings.footer_font_color }};"
+>
+  <div class="container">
+    <div class="footer-row">
+      <div class="col-3">
+        {% if section.settings.footer_logo != blank %}
+          <div class="footer-logo">
+            <img loading="lazy" src="{{ section.settings.footer_logo | img_url: '150x' }}" alt="Footer Logo">
+          </div>
+        {% endif %}
+        <p>
+          Drop us a note anytime:<br>
+          <a href="mailto:hi@fixbiome.com"><strong>hi@fixbiome.com</strong></a>
+        </p>
+        <p>
+          Read the research here:<br>
+          <a href="/research/"><strong>scientific literature &amp; studies</strong></a>
+        </p>
+        <p style="height: 57px;">
+          <a
+            href="https://www.facebook.com/fixbiome"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            data-label="Facebook"
+            class="icon plain facebook tooltip"
+            title="Follow on Facebook"
+            aria-label="Follow on Facebook"
+            ><i class="lab la-facebook-f"></i
+          ></a>
+          <a
+            href="https://instagram.com/fixbiome"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            data-label="Instagram"
+            class="icon plain instagram tooltip"
+            title="Follow on Instagram"
+            aria-label="Follow on Instagram"
+            ><i class="lab la-instagram"></i
+          ></a>
+        </p>
+      </div>
+      <div class="col-3 footer-second-menu">
+        <p>
+          <a href="https://fixbiome.com/our-people/">Our people</a><br>
+          <a href="/affiliates/">Affiliates</a><br>
+          <a href="/reviews/">Reviews</a><br>
+          <a href="/research/">Research</a>
+        </p>
+        <p>
+          <a href="/faqs/">FAQs</a><br>
+          <a href="/returns/">Returns</a><br>
+          <a href="/terms-and-conditions/">Terms and Conditions</a><br>
+          <a href="https://fixbiome.com/privacy-policy/">Privacy Policy</a><br>
+          <a href="https://fixbiome.com/contact-us/">Contact us</a>
+        </p>
+      </div>
+      <div class="col-6 klaviyo-form-col">
+        <div class="klaviyo-form"></div>
+        <div id="text-3810632250" class="text">
+          <div class="klaviyo-form-VS5BLK"></div>
+          <p style="font-size: 12px; text-align:center">
+            This site is protected by reCAPTCHA and the Google
+            <span style="color: #eaa794;">
+              <a style="color: #eaa794;" href="https://policies.google.com/privacy">Privacy Policy</a>
+            </span>
+            and
+            <span style="color: #eaa794;"
+              ><a style="color: #eaa794;" href="https://policies.google.com/terms">Terms of Service</a></span
+            >
+            apply.
+          </p>
+          <style>
+            #text-3810632250 {
+              font-size: 0.75rem;
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="max-width: 1200px; margin: auto;">
+    <div style="padding: 20px 20px 0 20px; font-size: 12.8px; ">
+      <p style="padding-top: 20px; border-top: 1px solid rgba(0,0,0,.1)">
+        *DISCLAIMER: These statements have not been evaluated by the Food and Drug Administration. This product is not
+        intended to diagnose, treat, cure or prevent any disease. The views and advice expressed by FixBIOME® are not
+        meant as a substitute for professional medical advice. Please always consult a health care professional if you
+        are taking any medications or have any medical condition before taking this or any dietary supplement.
+        Individual results may vary.
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% style %}
+  .custom-footer {
+    padding: 50px 0;
+  }
+
+  .custom-footer .footer-logo {
+    margin-bottom: 20px;
+  }
+
+  .custom-footer h2 {
+    margin-bottom: 10px;
+  }
+
+  .custom-footer i {
+    font-size: 18px;
+    color: rgb(153, 153, 153);
+  }
+
+  .custom-footer .footer-content {
+    margin-bottom: 20px;
+  }
+
+  .custom-footer strong {
+    font-weight: bold;
+  }
+
+  .custom-footer a {
+    color: {{ section.settings.footer_font_color }};
+    transition: color 0.3s ease;
+  }
+
+  .custom-footer a:hover {
+      color: {{ section.settings.footer_hover_color }};
+    }
+
+  .custom-footer .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+    .custom-footer .footer-logo {
+      width: 115px;
+    }
+    .custom-footer .footer-row {
+      width: 100%;
+      display: flex;
+      text-align: left;
+    }
+    .custom-footer .col-3 {
+      width: 25%;
+      padding: 0 20px;
+    }
+    .custom-footer .col-6 {
+      width: 50%;
+      padding: 0 15px;
+    }
+
+    .footer-row a {
+      color: #51534a;
+    }
+
+    .custom-footer {
+      font-size: 0.9em;
+      font-family: "Nunito Sans", sans-serif;
+    }
+
+  @media only screen and (max-width: 550px) {
+   .custom-footer .footer-row {
+      flex-direction: column;
+    }
+    .custom-footer .col-3 {
+      width: 100%;
+      padding: 0 20px;
+    }
+    .custom-footer .klaviyo-form-col {
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-second-menu {
+       display: flex;
+    }
+
+    .footer-second-menu p {
+      width: 50%;
+    }
+  }
+{% endstyle %}

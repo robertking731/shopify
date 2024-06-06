@@ -1,0 +1,1449 @@
+{% schema %}
+{
+"name": "Prodcut Desc(Custom)",
+"settings": []
+}
+{% endschema %}
+
+{%- liquid
+assign se_stts = section.settings
+-%}
+<svg xmlns="http://www.w3.org/2000/svg" class="t4s-d-none">
+	<symbol id="plus-line-icon" viewBox="0 0 32 32">
+		{%- render 'plus-line-icon' -%}
+	</symbol>
+	<symbol id="check-icon-blue" viewBox="0 0 32 32">
+		{%- render 'check-icon-blue' -%}	
+	</symbol>
+	<symbol id="gluten-icon" viewBox="0 0 32 32">
+		{%- render 'gluten-icon' -%}
+	</symbol>
+	<symbol id="gmo-icon" viewBox="0 0 32 32">
+		{%- render 'gmo-icon' -%}
+	</symbol>
+	<symbol id="fda-certified-lab-icon" viewBox="0 0 32 32">
+		{%- render 'fda-certified-lab-icon' -%}
+	</symbol>
+	<symbol id="made-in-usa-icon" viewBox="0 0 32 32">
+		{%- render 'made-in-usa-icon' -%}
+	</symbol>
+</svg> 
+
+
+
+<div class="product-description">
+    <div class="description-content">
+      {%- if product.description != blank -%}
+        {{ product.description }}
+      {%- else -%}
+        <div class="desc-item">
+            <div class="desc-item-left">
+                <div class="featured-review-slider">
+                    <div class="slider-container" data-dots="false" data-type="text-review" data-controls="hidden">
+                        <div class="slider-controls prevBtn">
+                            <button class="control-button" id="prevBtn">&#10094;</button>
+                        </div>
+                        <div class="slider">
+                            <div class="slide">
+                                <div class="slide-box">
+                                    <p>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                    </p>
+                                    <p><a href="#reviews">"This is a great product, I’ve struggled with IBS and SIBO for
+                                            a few years now. As a doctor myself I was looking for a specific formulation
+                                            and this was very close to what I wanted without having to take numerous
+                                            individual supplements."</a><br />- Anonymous</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class="slide-box">
+                                    <p><a href="#reviews">"I struggled with years of IBS, I was told I'd just have to
+                                            'deal with it'. This product gave me back my life!"</a><br />- Claire G.</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class="slide-box">
+                                    <p><a href="#reviews">"This product has changed my life forever and i’ve recommended
+                                            it to so many people!"</a><br />- Kassandra K.</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class="slide-box">
+                                    <p><a href="#reviews">"I had many gut issues. Including SIBO and leaky gut. After
+                                            week 5 I felt completely different. No bloating or pain."</a><br />-
+                                        Jennifer C.</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class="slide-box">
+                                    <p><a href="#reviews">"No more avoiding gluten!"</a><br />- Alessia</p>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class="slide-box">
+                                    <p><a href="#reviews">"Was an absolute last ditch effort and glad I found
+                                            it."</a><br />- Rylee</p>
+                                </div>
+                            </div>
+        
+                            <!-- Add more slides as needed -->
+                        </div>
+                        <ol class="dots_navigation">
+                            <!-- Add more dots_navigation corresponding to each slide -->
+                        </ol>
+                        <div class="slider-controls nextBtn">
+                            <button class="control-button" id="nextBtn">&#10095;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="desc-item-right">
+                <div class="accordion-box col-inner">
+                    <div class="desc-accordion-container">
+                        <div class="desc-accordion">
+                            <a><span>DESCRIPTION</span>
+                                <span class="plus-line-icon">
+                                
+                            </span></a>
+                        </div>
+                        <div class="desc-accordion-content">
+                            <p>Utilising clinically proven ingredients and developed by doctors and approved by
+                                naturopaths. Fix No1 is a
+                                next generation gut supplement that uses soft gel technology to combine carefully
+                                stabilized essential oils,
+                                providing a powerful antimicrobial blend. This combination allows for high
+                                bioavailability, whilst
+                                maintaining stability, to act on the gut and assist in the <strong>treatment of IBS,
+                                    SIBO, parasites and
+                                    digestive issues</strong>.</p>
+                            <p>Just as humans built walled cities and castles to protect themselves from attack, so too
+                                do bacteria… but
+                                their walls are called Biofilms. Although not on the same scale, biofilms can be thought
+                                of as protective
+                                walls that protects bacteria from attack by digestive enzymes, infection fighting white
+                                blood cells,
+                                macrophages and antibiotics. Fix No1 contains Biofilm busting abilities to break down
+                                these protective
+                                barriers in the same way heavy artillery was used to break down castle walls.</p>
+                            <p>Unlike traditional vitamins, FixBIOME’s supplements have been formulated by experts
+                                with&nbsp;over 50 years’
+                                combined experience in the field, to take action on the gut in a systematic
+                                way,&nbsp;based on the most up
+                                to date clinical research.</p>
+                            <p>Our oil capsules use next generation enteric coating to keep our delicate proprietary
+                                blend stable and ensure
+                                the capsule open at the right time in the gut.</p>
+                            <p>Fix No1 has a strong smell from essential oils. Take with food.</p>
+                        </div>
+        
+                        <div class="desc-accordion">
+                            <a><span>Ingredients</span><span class="plus-line-icon">
+                                
+                            </span></a>
+                        </div>
+                        <div class="desc-accordion-content">
+                            <p><strong>FIX No1</strong><br>
+                                <strong>Serving size:</strong> 1 softgel<br>
+                                <strong>Servings per container:</strong> 60<br>
+                                <strong>Amount per serving:</strong><br>
+                                Proprietary blend of: Red Thyme Oil, Sage Leaf 5:1 Extract, Lemon Balm Leaf 5:1 Extract
+                                – 325mg<br>
+                                Oregano Oil – 100mg<br>
+                                <strong>Other ingredients:</strong><br>
+                                Peppermint Oil, Gelatin, Glycerin, Purified Water, Coating Powder
+                            </p>
+                        </div>
+        
+                        <div class="desc-accordion">
+                            <a><span>Benefits</span><span class="plus-line-icon">
+                                
+                            </span></a>
+                        </div>
+                        <div class="desc-accordion-content">
+                            <h5>Red Thyme oil</h5>
+                            <ul>
+                                <li>Help fights acne</li>
+                                <li>May benefit those with hair loss</li>
+                                <li>Help boost immunity</li>
+                                <li>Help improving mood</li>
+                                <li>Prevents bacterial infections</li>
+                                <li>May assist in treating yeast infections</li>
+                                <li>Possibly helping fight certain types of cancer</li>
+                            </ul>
+                            <h5>Oregano Oil</h5>
+                            <ul>
+                                <li>Helps fight bacteria</li>
+                                <li>Helps treat fungal infections</li>
+                                <li>Provides antioxidants</li>
+                                <li>Aids in the reduction of inflammation</li>
+                                <li>Aid in relieving pain</li>
+                            </ul>
+                            <h5>Sage leaf</h5>
+                            <ul>
+                                <li>May support oral health</li>
+                                <li>Aid in stabilisation of blood sugar levels</li>
+                                <li>Help ease menopause symptoms</li>
+                                <li>Supports memory and brain health</li>
+                                <li>Help lower ‘bad’ LDL cholesterol</li>
+                                <li>Help alleviate diarrhea</li>
+                                <li>Support bone health</li>
+                                <li>Improve skin health</li>
+                            </ul>
+                            <h5>Lemon Balm leaf</h5>
+                            <ul>
+                                <li>Help reduce stress and anxiety</li>
+                                <li>Improves sleep</li>
+                                <li>supports cognitive function</li>
+                                <li>Can help ease insomnia and other sleep disorders</li>
+                                <li>Alleviates digestive problems</li>
+                                <li>Help with infections</li>
+                                <li>Help treat nausea</li>
+                                <li>Help minimize menstrual cramps</li>
+                            </ul>
+                            <h5>Peppermint Oil</h5>
+                            <ul>
+                                <li>May help treat irritable bowel syndrome (IBS)</li>
+                                <li>Help treat nausea</li>
+                                <li>Help treat digestive issues</li>
+                                <li>Relief of common cold and headaches</li>
+                            </ul>
+                        </div>
+        
+                        <div class="desc-accordion">
+                            <a><span>Quality</span><span class="plus-line-icon">
+                            </span></a>
+                        </div>
+                        <div class="desc-accordion-content">
+                            <h5>WHAT MAKES IT DIFFERENT?</h5>
+                            <p>We formulated all our products on the most up to date medical literature. We employ a
+                                team of doctors, and
+                                formulation experts with decades of experience to bring the best products to market. All
+                                our products are
+                                naturopath approved.</p>
+                            <h5>QUALITY</h5>
+                            <p>Our team of health experts source each ingredient in our products with great care. Every
+                                ingredient must be
+                                traditionally used for its stated purpose or have scientific evidence to support its
+                                health claims.</p>
+                            <h5>Soft gel stability technology</h5>
+                            <p>Many products are only as effective as the quality and form they are processed and
+                                encapsulated by. We
+                                combine delicate essential oils and dry extracts and encapsulate them in such a way they
+                                remain stable and
+                                resistant to potential efficacy contaminants such as heat or element exposure.</p>
+                            <p>We have dedicated great resources, research, and expertise in formulation optimisation.
+                                We manufacture in the
+                                USA in an FDA approved lab to ensure the quality and stability of our ingredients.</p>
+                            <h5>Team</h5>
+                            <p>Our core team consists of not only medical experts, but people who suffered with years of
+                                gut issues. They
+                                stand behind our products with passion after spending years trying to find solutions. We
+                                care about your gut
+                                health. We understand all the medical and psychological consequence of poor gut health
+                                and are frequently
+                                evaluating the growing body of medical literature.</p>
+                            <p><strong>We combine both traditional and functional medicine and support those looking for
+                                    natural
+                                    alternatives.</strong></p>
+        
+                        </div>
+        
+                        <div class="desc-accordion">
+                            <a><span>Die-off</span><span class="plus-line-icon">
+                            </span></a>
+                        </div>
+                        <div class="desc-accordion-content">
+                            <h5>What is SIBO/Small intestinal bacterial overgrowth:</h5>
+                            <p>Small intestine bacterial overgrowth and is the leading cause of IBS and effects women at
+                                double the rate. It
+                                accounts for 70-90% of all IBS.</p>
+                            <h5>What is Candida:</h5>
+                            <p>Candida is a yeast that lives in the mouth, intestines, and skin. The fungus is harmless
+                                at normal levels,
+                                but modern life often leads to overgrowth in the digestive track. Use of antibiotics is
+                                one of the leading
+                                risk factors for Candida.</p>
+                            <h5>DIE-OFF</h5>
+                            <p>If you are taking these products for Candida or SIBO (small intestinal bacterial
+                                overgrowth) die-off is a
+                                common side effect in the first few weeks of taking them.</p>
+                            <p>It is often a good sign that it’s working, and you are returning your bacterial and
+                                fungal balance to normal
+                                levels.</p>
+                            <p>Die-off, when taking effective supplements, happens because your immune system is
+                                reacting to killing off the
+                                fungal or bacterial overgrowth. It will subside once your body has successfully killed
+                                off the overgrowth,
+                                but this can take a week or two. Die-off symptoms are usually at their worst<br>
+                                the first few days.</p>
+                            <p>A lot of what we feel when we encounter an illness or health threats, isn’t a result of
+                                the infection or
+                                bacteria itself, but the body’s reaction to removing and clearing it out.</p>
+                            <h5>The science of die-off:</h5>
+                            <p>When you kill off the unwanted overgrowth of small intestinal bacterial overgrowth or
+                                candida a reaction
+                                takes place in the body. This is called the Herxheimer or Herx Reaction. It usually
+                                takes place short-term
+                                <strong>from a few days to a few weeks and is a natural detoxification reaction in the
+                                    body well studied in
+                                    medicine.</strong> As the body detoxifies, it is not uncommon to experience flu-like
+                                symptoms including
+                                headache, joint and muscle pain, body aches, general malaise, sweating, chills, nausea,
+                                or other symptoms.
+                            </p>
+                            <h5>What Dr. Freeman says</h5>
+                            <p>“In the case of Small intestinal bacterial overgrowth, it reacts to the
+                                lipopolysaccharides released from
+                                bacteria as they die and break apart to be cleared out by the body. This process
+                                releases something known as
+                                cytokines. This can cause a systemic inflammatory reaction that can make<br>
+                                you feel unwell. It is similar for Candida overgrowth and usually only lasts a week or
+                                two.”</p>
+                            <p>Unfortunately, sometimes you must feel worse before you feel better as your body has some
+                                cleaning up to do!
+                            </p>
+                            <p>READ MORE: <span style="color: #eaa794;"><strong><a
+                                            href="https://fixbiome.com/die-off-symptoms-during-treatment/"
+                                            target="_blank" rel="noopener">Die-off symptoms during
+                                            treatment</a></strong></span></p>
+                        </div>
+        
+                        <div class="desc-accordion">
+                            <a><span>Directions</span><span class="plus-line-icon">
+                                
+                            </span></a>
+                        </div>
+                        <div class="desc-accordion-content">
+                            <h5>Suggested dose:</h5>
+                            <p>Take <strong>1</strong> capsule day and night, or as directed by your health
+                                professional. We advise taking this supplement on a full stomach.</p>
+                            <p>The maximum dosage is <strong>3</strong> capsules daily.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="desc-item --item-2">
+            <div class="desc-item-left">
+                <div class="col-inner">
+                    <h3 class="" style="text-transform: uppercase; font-weight: 700; font-size: 1.25em;"><span style="font-size: 110%;">Motility issues, bloating and IBS?<br>
+                            Bacterial imbalances and dysbiosis are<br>
+                            the leading cause.</span></h3>
+                </div>
+            </div>
+            <div class="desc-item-right">
+                <div class="col-inner">
+                    <h5>An essential for gut health and bacterial balancing in the gut.</h5>
+                    <p>Because&nbsp;over 90% of all IBS sufferers have an imbalance in their gut flora, this powerful
+                        oil formulation is different to most gut supplements.* It doesn’t just aimlessly introduce new
+                        bacteria strains but instead is aimed to control any unwanted overgrowth leading to dysbiosis
+                        and motility issues. This helps to reduce unwanted bacterial reactions throughout the gut that
+                        manifest as discomfort, bloating and other gut related issues that can affect the brain gut and
+                        skin gut axis.</p>
+                    <p><strong>*patent pending on proprietary manufacturing process and the systems
+                            formulations</strong></p>
+                    <div id="gap-130109912" class="gap-element clearfix show-for-small"
+                        style="display:block; height:auto;">
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        
+        <div class="desc-item --item-3">
+            <div class="desc-item-left">
+                <div class="col-inner">
+                    <h3 class="thin-font" style="margin-bottom: 20px;">SYMPTOMS THIS SYSTEM WAS DESIGNED TO ADDRESS:</h3>
+                    <div class="desc-list">
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Bloating</p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Growing list of food sensitivities</p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Symptoms of bacterial and fungal overgrowth
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Symptoms of leaky gut (or intestinal permeability)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Symptoms related to chronic stretching of the intestinal walls caused by SIBO/Candida/longterm IBS
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Irregular bowel movements
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Dysbiosis
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Stomach cramps
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sub-desc-item">
+                            <div class="inner-icon check-icon-blue">
+                                
+                            </div>
+                            <div class="inner-text">
+                                <p>Gas/excessive flatulence
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="desc-item-right" style="display: flex;">
+                <div class="col-inner">
+                    <div class="">
+                        <div class="d-flex pb-30" style="display: flex; justify-content: space-between; text-align: center;">
+                            <div>
+                                <div class="inner-image">
+                                   <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0651/9773/6133/files/gluten-icon.svg?v=1714384438" alt="">
+                                </div>
+                                <div class="inner-text">
+                                    Gluten free
+                                </div>
+                            </div>
+                            <div>
+                                <div class="inner-image">
+                                    <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0651/9773/6133/files/gmo-icon.svg?v=1714384067" alt="">
+                                </div>
+                                <div class="inner-text">
+                                    GMO free
+                                </div>
+                            </div>
+                            <div>
+                                <div class="inner-image">
+                                    <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0651/9773/6133/files/fda-certified-lab-icon.svg?v=1714384067" alt="">
+                                </div>
+                                <div class="inner-text">
+                                    FDA certified lab
+                                </div>
+                            </div>
+                            <div>
+                                <div class="inner-image">
+                                    <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0651/9773/6133/files/made-in-usa-icon.svg?v=1714384066" alt="">
+                                </div>
+                                <div class="inner-text">
+                                    Made in USA
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inner-text">
+                            <p><strong>DOES NOT CONTAIN:</strong> Gluten, Wheat, Dairy, Lactose, Soy, Artificial colours, Artificial flavours, Artificial sweeteners, Bee products, Corn, Egg, MSG, Tree nuts, Ground nuts, Peanuts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      {%- endif -%}
+      
+    </div>
+</div>
+
+
+
+<style>
+
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.desc-item.--item-3 .desc-item-right .inner-text {
+    font-size: 0.9em;
+}
+
+.desc-item.--item-3 .desc-item-right .col-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.desc-item.--item-3 svg {
+    width: 36px;
+}
+
+.desc-item.--item-3 .desc-item-left p {
+    margin: 0px;
+}
+
+.desc-item.--item-3 p {
+    line-height: 29px;
+}
+
+.desc-item.--item-3 p
+
+.desc-item.--item-3 h3 {
+    margin-bottom: 20px;
+}
+
+.desc-item.--item-3 .sub-desc-item {
+    display: flex;
+}
+
+.desc-item.--item-3 .inner-icon {
+    padding-right: 16px;
+}
+
+.desc-item.--item-3 .inner-icon svg {
+    width: 32px;
+    height: 32px;
+}
+  .desc-item {
+    padding-bottom: 40px;
+  }
+
+.desc-item.--item-2 .desc-item-left .col-inner {
+    text-align: center;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+  .desc-item.--item-2 .desc-item-right .col-inner {
+    font-size: 0.9em;
+  }
+</style>
+
+<style>
+    .product-description {
+        margin-top: 10px;
+    }
+
+    .product-description h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .description-content {
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 0 15px;
+        margin: auto;
+        max-width: 1380px;
+    }
+
+    .description-content .desc-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .desc-item-left {
+        width: 100%;
+      padding-top: 30px;
+    }
+
+    .desc-item-right {
+        width: 100%;
+      padding-top: 30px;
+    }
+
+    .desc-item .featured-review-slider {
+        max-width: 100%;
+        /* padding: 100px 40px 0 40px; */
+        margin: auto;
+        margin-top: 70px;
+    }
+
+    .desc-item .slider-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin: auto;
+        cursor: grab;
+    }
+
+    .desc-item .slider-container .slider {
+        width: 100%;
+        display: flex;
+        transition: transform 0.5s ease;
+        overflow-x: unset;
+        overflow-y: unset;
+    }
+
+    .desc-item .slider-container .slide {
+        flex: 0 0 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .desc-item .slider-container .slide a {
+        width: 100%;
+    }
+
+    .desc-item .slider-container .slide img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        transition: transform 0.5s ease;
+        cursor: pointer;
+        /* Add cursor pointer to indicate clickable */
+        transition: transform 0.3s ease;
+    }
+
+    .desc-item .slider-container .slide .slide-box {
+        width: 100%;
+    }
+
+    .desc-item .slider-container .slide .slide-box p {
+        font-style: italic !important;
+        color: #51534a;
+        font-size: 0.9em;
+    }
+
+    .desc-item .slider-container .slide .slide-box p a {
+        font-style: italic !important;
+        line-height: 1.4em;
+        touch-action: manipulation;
+        font-size: 0.9em;
+    }
+
+    .desc-item .slider-container .dots_navigation {
+        text-align: center;
+        margin-top: 10px;
+        padding: 0px;
+
+    }
+
+    .desc-item .slider-container .Dots {
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+        width: 12px;
+        height: 12px;
+        background-color: #999393;
+        border-radius: 50%;
+    }
+
+    .desc-item .slider-container .dot-selected {
+        background-color: #eaa794;
+    }
+
+    .desc-item .slider-container .slider-controls {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -40%);
+        display: flex;
+        justify-content: space-between;
+        margin-top: -25px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s;
+        z-index: 1000;
+    }
+
+    .desc-item .slider-container .slider-controls.prevBtn {
+        left: 25px;
+    }
+
+    .desc-item .slider-container .slider-controls.nextBtn {
+        right: -33px;
+    }
+
+    .desc-item .slider-container:hover .slider-controls {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .desc-item .slider-container:hover .slider-controls.nextBtn {
+        right: -45px;
+    }
+
+    .desc-item .slider-container:hover .slider-controls.prevBtn {
+        left: 9px;
+    }
+
+    .desc-item .slider-container .control-button {
+        cursor: pointer;
+        padding: 10px;
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 22px;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+        color: rgb(153, 147, 147);
+        font-weight: 100;
+    }
+
+    /* .control-button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    } */
+    .slider-container .control-button:hover {
+        color: #eaa794;
+    }
+
+    .is-italic {
+        font-style: italic !important;
+    }
+
+
+
+    @media (min-width: 768px) {
+        .desc-item-left {
+            width: 55%;
+          padding-top: 0px;
+        }
+
+        .desc-item-right {
+            width: 45%;
+          padding-top: 0px;
+        }
+
+        .desc-item-right .accordion-box {
+            margin-left: 10%;
+        }
+
+        .description-content .desc-item {
+            flex-direction: row;
+        }
+      .desc-item.--item-2 .desc-item-right .col-inner {
+        margin-left: 10%;
+      }
+      .desc-item.--item-3 .desc-item-right .col-inner {
+        margin-left: 10%;
+      }
+    }
+</style>
+
+<style>
+    .desc-accordion-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .desc-accordion {
+        cursor: pointer;
+        height: 50px;
+        border-top: 1px solid #ececec;
+        padding-left: 20px;
+        padding: .6em 2.3em;
+        padding-right: 10px;
+    }
+
+    .no-accordion a:hover {
+        color: #111;
+    }
+
+    .desc-accordion a {
+        width: 100%;
+        height: 100%;
+        line-height: 50px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+    }
+
+    .desc-accordion:hover {
+        background-color: #fff;
+    }
+
+    .desc-accordion-content {
+        background-color: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-in-out;
+        font-size: 0.9em;
+
+    }
+
+    .desc-accordion-content>div {
+        padding-left: 8px;
+        color: #000;
+        display: flex;
+        align-items: center;
+        font-family: "Nunito Sans", sans-serif;
+        font-weight: 700;
+    }
+
+    .desc-accordion-content>div>a {
+        text-transform: uppercase;
+        color: #000;
+        font-size: 0.8em;
+    }
+
+    .desc-accordion-content ul li {
+        line-height: 25.6px;
+        padding: 7px 0px 0px 5px;
+    }
+
+    .desc-accordion-content ul li a {
+        font-weight: 400;
+        color: rgb(102, 102, 102);
+        font-size: 1em;
+    }
+
+    .desc-accordion-content ul li a:hover {
+        color: #111;
+        background-color: transparent;
+    }
+
+    .no-accordion {
+        cursor: pointer;
+        height: 50px;
+        border-top: 1px solid #ececec;
+        padding-left: 20px;
+    }
+
+    .no-accordion a {
+        width: 100%;
+        height: 100%;
+        line-height: 50px;
+        display: flex;
+        width: 100%;
+        font-size: 0.8em;
+    }
+
+    .no-accordion:hover {
+        background-color: rgba(0, 0, 0, .05);
+    }
+
+    .desc-accordion-container .is-open {
+        background-color: #fff;
+        border-top: 1px solid #eaa794;
+    }
+
+    .desc-accordion>a>.plus-line-icon {
+        padding-top: 3px;
+    }
+
+    .desc-accordion>a:hover {
+        color: #111;
+    }
+
+    .desc-accordion>a>.plus-line-icon>svg {
+        width: 14px;
+        height: 14px;
+        fill: hsla(0, 0%, 40%, .85);
+        transition: all 0.2s;
+    }
+
+    .desc-accordion.is-open svg {
+        transform: rotate(180deg);
+        transition: all 0.2s;
+    }
+
+    .desc-accordion-container a {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 29px;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        color: #51534a;
+    }
+
+    .accordion-box {
+        color: #51534a;
+    }
+
+    .accordion-box ul {
+        list-style: disc;
+    }
+
+    @keyframes slide-down {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+  <style>
+    .layout {
+      max-width: 1020px;
+      /* padding: 100px 40px 0 40px; */
+      margin: auto;
+
+      padding: 0 40px;
+    }
+
+    .product-content-slide {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin: auto;
+    }
+
+    .product-content-slide .slider {
+      width: 100%;
+      display: flex;
+      transition: transform 0.5s ease;
+      overflow-x: unset;
+      overflow-y: unset;
+    }
+
+    .product-content-slide .slide {
+      /* flex: 0 0 100%; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .product-content-slide .slide a {
+      width: 100%;
+    }
+
+    .product-content-slide .slide img {
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      transition: transform 0.5s ease;
+      cursor: pointer;
+      /* Add cursor pointer to indicate clickable */
+      transition: transform 0.3s ease;
+    }
+
+    .product-content-slide .dots_navigation {
+      text-align: center;
+      margin-top: 10px;
+      padding: 0px;
+
+    }
+
+    .product-content-slide .Dots {
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+      width: 12px;
+      height: 12px;
+      background-color: #999393;
+      border-radius: 50%;
+    }
+
+    .product-content-slide .dot-selected {
+      background-color: #eaa794;
+    }
+
+    .product-content-slide .slider-controls {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: -25px;
+    }
+
+    .product-content-slide .control-button {
+      cursor: pointer;
+      padding: 10px;
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 35px;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+      color: rgb(153, 147, 147);
+      font-weight: 100;
+    }
+
+    /* .control-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  } */
+    .product-content-slide .control-button:hover {
+      color: #eaa794;
+    }
+
+    .product-content-slide .slide-box {
+      width: 100%;
+      padding: 0 40px;
+    }
+
+    /* Responsive slides */
+    @media (max-width: 599px) {
+
+      /* Mobile styles */
+      .product-content-slide .slide {
+        width: 100%;
+        /* Show one full slide */
+        flex: 0 0 100%;
+      }
+    }
+
+    @media (min-width: 600px) and (max-width: 899px) {
+
+      /* Tablet styles */
+      .product-content-slide .slide {
+        width: 50%;
+        /* Show half of a slide */
+        flex: 0 0 50%;
+      }
+    }
+
+    @media (min-width: 900px) {
+
+      /* Desktop styles */
+      .product-content-slide .slide {
+        width: 33.3333%;
+        /* Show one third of a slide */
+        flex: 0 0 33.333%;
+      }
+    }
+
+    .product-content-results-box .slider {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .product-content-results-box .slider .slide {
+      width: 33.3333%;
+    }
+
+    .product-content-results-box .slider .slide .slide-box {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .product-contents {
+      text-align: center;
+    }
+
+    .product-contents .slider {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .product-contents em {
+      font-size: 0.9em;
+    }
+
+  </style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".product-description .slider-container .slide");
+        const dots_navigation = document.querySelectorAll(".product-description .slider-container .Dots");
+        let currentIndex = 0;
+        let startX;
+
+        function showSlide(index) {
+            document.querySelector(".product-description .slider-container .slider").style.transform = `translateX(-${index * 100}%)`;
+            resetDotsnailBorders();
+            dots_navigation.forEach(dot => dot.style.backgroundColor = "#999393");
+            // dots_navigation[index].style.backgroundColor = "#eaa794";
+        }
+
+        function resetDotsnailBorders() {
+            dots_navigation.forEach(dot => {
+                dot.style.borderColor = "transparent";
+            });
+        }
+
+        function prevSlide() {
+            currentIndex = currentIndex - 1;
+            if (currentIndex < 0) {
+                currentIndex = slides.length - 1;
+            }
+            showSlide(currentIndex);
+        }
+
+        function nextSlide() {
+            currentIndex = currentIndex + 1;
+            if (currentIndex >= slides.length) {
+                currentIndex = 0;
+            }
+            showSlide(currentIndex);
+        }
+
+        dots_navigation.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                showSlide(index);
+            });
+        });
+
+        document.getElementById("prevBtn").addEventListener("click", () => {
+            prevSlide();
+        });
+
+        document.getElementById("nextBtn").addEventListener("click", () => {
+            nextSlide();
+        });
+
+        // Swipe Gesture
+        document.querySelector(".product-description .slider-container").addEventListener("touchstart", touchStart);
+        document.querySelector(".product-description .slider-container").addEventListener("touchmove", touchMove);
+
+        function touchStart(e) {
+            startX = e.touches[0].clientX;
+        }
+
+        function touchMove(e) {
+            if (!startX) return;
+
+            let endX = e.touches[0].clientX;
+            let diffX = startX - endX;
+
+            if (diffX > 0) {
+                // Swiped left
+                nextSlide();
+            } else {
+                // Swiped right
+                prevSlide();
+            }
+
+            startX = null;
+        }
+
+        // Show the first slide initially
+        showSlide(currentIndex);
+
+    });
+
+    const descAccordion = document.querySelectorAll(".desc-accordion");
+    console.log(descAccordion);
+    descAccordion.forEach((accordion) => {
+        accordion.onclick = function () {
+            this.classList.toggle("is-open");
+
+            let content = this.nextElementSibling;
+
+            if (content.style.maxHeight) {
+                // If the accordion is open, close it
+                content.style.maxHeight = null;
+            } else {
+                // If the accordion is currently closed, open it
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        };
+    });
+
+  function productContentSlide() {
+        function getSlidesToShow() {
+          // Determine how many slides to show based on window width
+          if (window.innerWidth < 600) {
+            return 1; // Mobile
+          } else if (window.innerWidth >= 600 && window.innerWidth < 900) {
+            return 2; // Tablet
+          } else {
+            return 3; // Desktop
+          }
+        }
+
+        const slider = document.querySelector(".product-content-slide .slider");
+        const slides = document.querySelectorAll(".product-content-slide .slide");
+        let dotCount = Math.ceil(slides.length / getSlidesToShow());
+        let html = "";
+        for (let i = 0; i < dotCount; i++) {
+          html += '<li class="Dots" data-index="' + i + '"></li>';
+        }
+        document.querySelector(".product-content-slide .dots_navigation").innerHTML = html;
+        html = '';
+
+        let dots_navigation = document.querySelectorAll(".product-content-slide .Dots");
+        let currentIndex = 0;
+        let startX;
+        let cnt;
+        let dotIndex = 1;
+
+        function showSlide(ct, moveType) {
+          // Update the slider translation based on slide width and current index
+          let index = ct;
+          const slideWidth = slider.clientWidth / getSlidesToShow();
+          let maxSlideWidth = slides.length * slideWidth;
+          if (maxSlideWidth - (slideWidth * getSlidesToShow()) < index * slideWidth) {
+            if (moveType == "dot") {
+              slider.style.transform = `translateX(-${(index - (slides.length % getSlidesToShow()) + 1) * slideWidth}px)`;
+              resetDotColors(ct, "dot");
+              return;
+            }
+            slider.style.transform = `translateX(-${0 * slideWidth}px)`;
+            resetDotColors(ct, "");
+            return;
+          }
+          console.log("dd", ct)
+          slider.style.transform = `translateX(-${index * slideWidth}px)`;
+          resetDotColors(ct, "");
+        }
+
+
+        function resetDotColors(ct, dt) {
+          dots_navigation.forEach(dot => {
+            dot.style.backgroundColor = "#999393";
+          });
+
+          if (dt == "dot") {
+            dots_navigation[ct/getSlidesToShow()].style.backgroundColor = "#eaa794";
+            return;
+          }
+
+          if (dt == "ed") {
+            dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+            return;
+          }
+          if (ct == 0) {
+            dots_navigation[0].style.backgroundColor = "#eaa794";
+          } else {
+            if (ct % getSlidesToShow() == 0) {
+              dots_navigation[ct / getSlidesToShow()].style.backgroundColor = "#eaa794";
+              return;
+            }
+            if ((dotCount - 1) * getSlidesToShow() - 1 == ct) {
+              console.log(ct, dotCount)
+              dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+              return;
+            }
+            dots_navigation[Math.ceil(ct / getSlidesToShow()) - 1].style.backgroundColor = "#eaa794";
+          }
+        }
+
+        function prevSlide() {
+          currentIndex = currentIndex - 1;
+          if (currentIndex < 0) {
+            currentIndex = slides.length - getSlidesToShow();
+          }
+          showSlide(currentIndex, "");
+        }
+
+        function nextSlide() {
+          currentIndex = currentIndex + 1;
+          if (currentIndex > slides.length - getSlidesToShow()) {
+            currentIndex = 0;
+          }
+          showSlide(currentIndex, "");
+        }
+
+        dots_navigation.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            showSlide(getSlidesToShow() * index, "dot");
+          });
+        });
+
+        document.getElementById("product_contents_prevBtn").addEventListener("click", () => {
+          prevSlide();
+        });
+
+        document.getElementById("product_contents_nextBtn").addEventListener("click", () => {
+          nextSlide();
+        });
+
+        // Swipe Gesture
+        document.querySelector(".product-content-slide").addEventListener("touchstart", touchStart);
+        document.querySelector(".product-content-slide").addEventListener("touchmove", touchMove);
+
+        function touchStart(e) {
+          startX = e.touches[0].clientX;
+        }
+
+        function touchMove(e) {
+          if (!startX) return;
+
+          let endX = e.touches[0].clientX;
+          let diffX = startX - endX;
+
+          if (diffX > 0) {
+            // Swiped left
+            nextSlide();
+          } else {
+            // Swiped right
+            prevSlide();
+          }
+
+          startX = null;
+        }
+
+        // Show the first slide initially
+        showSlide(currentIndex, "");
+        // Adjust the slide on window resize to handle media query changes
+        window.addEventListener("resize", () => {
+          dotCount = Math.ceil(slides.length / getSlidesToShow());
+          html = "";
+          for (let i = 0; i < dotCount; i++) {
+            html += '<li class="Dots" data-index="' + i + '"></li>';
+          }
+          document.querySelector(".product-content-slide .dots_navigation").innerHTML = html;
+          html = '';
+
+          dots_navigation = document.querySelectorAll(".product-content-slide .Dots");
+          showSlide(currentIndex, "");
+          dots_navigation.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+              showSlide(getSlidesToShow() * index, "dot");
+            });
+          });
+        });
+      }
+
+      let scrollWidth = window.innerWidth;
+        if (scrollWidth < 576) {
+          document.querySelector(".product-contents").classList.remove("product-content-results-box");
+          document.querySelector(".product-contents").classList.add("product-content-slide");
+          productContentSlide();
+        } else {
+          document.querySelector(".product-contents").classList.add("product-content-results-box");
+          document.querySelector(".product-contents").classList.remove("product-content-slide");
+        }
+
+      window.addEventListener("resize", () => {
+        let scrollWidth = window.innerWidth;
+        if (scrollWidth < 576) {
+          document.querySelector(".product-contents").classList.remove("product-content-results-box");
+          document.querySelector(".product-contents").classList.add("product-content-slide");
+          productContentSlide();
+        } else {
+          document.querySelector(".product-contents").classList.add("product-content-results-box");
+          document.querySelector(".product-contents").classList.remove("product-content-slide");
+        }
+      });
+
+  let elems = document.querySelectorAll('.data-one');
+    elems.forEach(function(element) {
+        circliful(element); 
+    });
+
+function adjustCanvasSize() {
+    // Mobile devices typically have a screen width less than or equal to 768px
+    return window.innerWidth <= 768 ? 50 : 100;
+}
+
+function circliful(element) {
+    // Read data attributes from the element
+    var dimension = adjustCanvasSize(); // Get the dynamic dimension based on the screen width
+    var fgcolor = element.getAttribute('data-fgcolor') || "#555";
+    var bgcolor = element.getAttribute('data-bgcolor') || "#ccc";
+    var text = element.getAttribute('data-text') || "";
+    var info = element.getAttribute('data-info') || "";
+    var width = parseFloat(element.getAttribute('data-width')) || 15;
+    var fontsize = parseFloat(element.getAttribute('data-fontsize')) || 15;
+    var percent = parseFloat(element.getAttribute('data-percent')) || 50;
+
+    // Adjust canvas size for high DPI screens
+    var dpr = window.devicePixelRatio || 1;
+    var size = parseInt(dimension, 10);
+    var canvasSize = size * dpr;
+    
+    // Create the canvas element and adjust its size based on device pixel ratio
+    var canvas = document.createElement('canvas');
+    canvas.width = canvasSize;
+    canvas.height = canvasSize;
+    element.appendChild(canvas);
+    
+    // Get the context and set scaling
+    var context = canvas.getContext('2d');
+    context.scale(dpr, dpr);
+
+    // Calculate the radius of the circle and positions
+    var x = size / 2;
+    var y = size / 2;
+    var radius = (size - width) / 2; // Radius adjusted to account for stroke width
+    var startAngle = -Math.PI / 2; // Start at the top
+    var currentEndAngle = startAngle;
+    var endAngle = startAngle + (percent / 100 * 2 * Math.PI);
+
+    // Animate the circle
+    function animateCircle() {
+        // Clear the canvas
+        context.clearRect(0, 0, canvasSize, canvasSize);
+
+        // Draw background circle
+        context.beginPath();
+        context.arc(x, y, radius, 0, 2 * Math.PI);
+        context.lineWidth = width;
+        context.strokeStyle = bgcolor;
+        context.stroke();
+
+        // Draw foreground circle
+        context.beginPath();
+        context.arc(x, y, radius, startAngle, currentEndAngle);
+        context.strokeStyle = fgcolor;
+        context.stroke();
+
+        // Increment the end angle for animation or set to the final state if reached percentage
+        if(currentEndAngle < endAngle){
+            // Increment by a small value, it defines the speed of the animation
+            currentEndAngle += 0.05;
+            requestAnimationFrame(animateCircle); // Continue the animation
+        }
+
+        // Draw text in the middle of the circle
+        if (text) {
+            context.fillStyle = '#51534a';
+            context.font = (fontsize-4) + 'px sans-serif';
+            context.textBaseline = 'middle';
+            context.textAlign = 'center';
+            context.fillText(text, x, y);
+        }
+    }
+
+    // Start the animation
+    animateCircle();
+}
+
+// Optionally - reinitialize circles on window resize to adjust to new conditions
+window.addEventListener('resize', function(){
+    let elems = document.querySelectorAll('.data-one');
+    elems.forEach(function(element) {
+        // Clear existing canvas
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+        circliful(element); 
+    });
+});
+</script>
+

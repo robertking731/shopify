@@ -1,0 +1,42 @@
+<script src="{{ 'widget.min.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+   if product.metafields.custom.product_id_for_stamped_reviews != blank
+     assign product_stamped_id =  product.metafields.custom.product_id_for_stamped_reviews
+   else 
+     assign product_stamped_id = product.id
+    endif
+-%}
+<div class="product-reviews-section">
+  <div style="padding: 60px 15px 0px 0px;">
+  <h1><span style="font-size: 120%;">Reviews</span></h1>
+  <h3>See what our customers have to say</h3>
+  </div>
+  <!-- Start of Judge.me code --> 
+  <div style='clear:both'></div> 
+    <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'> 
+      {{ product.metafields.judgeme.widget }} 
+    </div> 
+  <!-- End of Judge.me code -->
+
+</div>
+
+<style>
+  .product-reviews-section {
+    max-width: 1320px;
+    margin: auto;
+    padding:0 15px;
+  }
+</style>
+
+{%- schema -%}
+  {
+    "name": "Product Reviews",
+    "settings": [
+    ],
+    "presets": [
+      {
+        "name": "Product Reviews"
+      }
+    ]
+  }
+{%- endschema -%}

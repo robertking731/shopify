@@ -1,0 +1,81 @@
+{{ 'customer.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'customer.min.js' | asset_url }}" defer></script>
+
+
+<div class="t4s-customer t4s-customer-account is--order t4s-row" data-customer-addresses>
+  <div class="t4s-col-12 t4s-col-md-3 t4s-col-item t4s-account-sidebar">
+    <div class="account-user circle">
+      <span class="image mr-half inline-block">
+        <img loading="lazy"
+          alt=""
+          src="https://secure.gravatar.com/avatar/0f84c59a205d311140e62f84e315e643?s=70&amp;d=mm&amp;r=g"
+          srcset="https://secure.gravatar.com/avatar/0f84c59a205d311140e62f84e315e643?s=140&amp;d=mm&amp;r=g 2x"
+          class="avatar avatar-70 photo"
+          height="70"
+          width="70"
+          decoding="async"
+          data-pin-nopin="nopin"
+        >
+      </span>
+      <span class="user-name inline-block">
+        {%- if customer.name != blank -%} 
+          {{ customer.name }} 
+        {% else %} 
+          {{ customer.email }} 
+        {%- endif -%}
+        <em class="user-id op-5">{{ customer.id }}</em>
+      </span>    
+    </div>
+    <nav class="t4s-account-nav">
+      <ul>
+        <li class="t4s-account-nav-link t4s-account-nav-link--dashboard">
+          <a href="{{ routes.account_url }}">Dashboard</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--orders">
+          <a href="/my-account/order/">Orders</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--downloads">
+          <a href="/my-account/downloads">Downloads</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--edit-address">
+          <a href="{{ routes.account_addresses_url }}">Addresses</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--payment-methods  is--active">
+          <a href="/my-account/payment-methods">Payment methods</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--account-details">
+          <a href="/my-account/edit-account">Account details</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--customer-logout">
+          <a href="{{ routes.account_logout_url }}" data-no-instant>Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="t4s-col-12 t4s-col-md-9 t4s-col-item t4s-account-content">
+    <svg style="display:none">
+      <symbol id="icon-discount" viewBox="0 0 12 12">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M7 0h3a2 2 0 012 2v3a1 1 0 01-.3.7l-6 6a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4l6-6A1 1 0 017 0zm2 2a1 1 0 102 0 1 1 0 00-2 0z" fill="currentColor">
+      </symbol>
+    </svg>
+    <div class="t4s_mb_30">
+     
+        
+    </div>
+    
+  </div>
+</div>
+
+{%- schema -%}
+{
+  "name": "Payment Methods",
+  "tag": "section",
+  "class": "t4s-section t4s-section-customers t4s-container",
+  "settings": [],
+  "presets": [
+      {
+        "name": "Customer Payment Methods"
+      }
+    ]
+}
+{% endschema %}

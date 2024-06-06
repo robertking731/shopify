@@ -1,0 +1,206 @@
+{{ 'customer.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'customer.min.js' | asset_url }}" defer></script>
+
+
+<div class="t4s-customer t4s-customer-account is--order t4s-row customer-login-register-container account-details"  data-customer-addresses>
+  <div class="t4s-col-12 t4s-col-md-3 t4s-col-item t4s-account-sidebar">
+    <div class="account-user circle">
+      <span class="image mr-half inline-block">
+        <img loading="lazy"
+          alt=""
+          src="https://secure.gravatar.com/avatar/0f84c59a205d311140e62f84e315e643?s=70&amp;d=mm&amp;r=g"
+          srcset="https://secure.gravatar.com/avatar/0f84c59a205d311140e62f84e315e643?s=140&amp;d=mm&amp;r=g 2x"
+          class="avatar avatar-70 photo"
+          height="70"
+          width="70"
+          decoding="async"
+          data-pin-nopin="nopin"
+        >
+      </span>
+      <span class="user-name inline-block">
+        {%- if customer.name != blank -%} 
+          {{ customer.name }} 
+        {% else %} 
+          {{ customer.email }} 
+        {%- endif -%}
+        <em class="user-id op-5">{{ customer.id }}</em>
+      </span>    
+    </div>
+    <nav class="t4s-account-nav">
+      <ul>
+        <li class="t4s-account-nav-link t4s-account-nav-link--dashboard">
+          <a href="{{ routes.account_url }}">Dashboard</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--orders">
+          <a href="/my-account/order/">Orders</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--downloads">
+          <a href="/my-account/downloads">Downloads</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--edit-address">
+          <a href="{{ routes.account_addresses_url }}">Addresses</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--payment-methods">
+          <a href="/my-account/payment-methods">Payment methods</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--account-details is--active">
+          <a href="/my-account/edit-account">Account details</a>
+        </li>
+        <li class="t4s-account-nav-link t4s-account-nav-link--customer-logout">
+          <a href="{{ routes.account_logout_url }}" data-no-instant>Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="t4s-col-12 t4s-col-md-9 t4s-col-item t4s-account-content">
+    <svg style="display:none">
+      <symbol id="icon-discount" viewBox="0 0 12 12">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M7 0h3a2 2 0 012 2v3a1 1 0 01-.3.7l-6 6a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4l6-6A1 1 0 017 0zm2 2a1 1 0 102 0 1 1 0 00-2 0z" fill="currentColor">
+      </symbol>
+    </svg>
+    <div class="t4s_mb_30 account-edit-form">
+     <form method="post" action="/account">
+        {{ form | payment_terms }}
+
+        <div class="d-flex">
+          <div class="t4s_field t4s-pr t4s_mb_20">
+            <label for="CustomerFirstName"> {{ 'customer.account_details.first_name' | t }} <span class="required">*</span> </label>
+            <input
+              class="t4s_frm_input"
+              type="text"
+              name="customer[first_name]"
+              id="CustomerFirstName"
+              autocomplete="first-name"
+              autocorrect="off"
+              autocapitalize="off"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              autofocus
+            >
+          </div>
+          <div class="t4s_field t4s-pr t4s_mb_20">
+            <label for="CustomerLastName"> {{ 'customer.account_details.last_name' | t }} <span class="required">*</span> </label>
+            <input
+              class="t4s_frm_input"
+              type="text"
+              name="customer[last_name]"
+              id="CustomerLastName"
+              autocomplete="last-name"
+              autocorrect="off"
+              autocapitalize="off"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+            >
+          </div>
+        </div>
+        
+        
+        
+        <div class="t4s_field t4s-pr t4s_mb_20">
+          <label for="DisplayName"> {{ 'customer.account_details.display_name' | t }} <span class="required">*</span> </label>
+          <input
+            class="t4s_frm_input"
+            type="text"
+            name="customer[display_name]"
+            id="DisplayName"
+            autocomplete="display-name"
+            autocorrect="off"
+            autocapitalize="off"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+          >
+        </div>
+        
+        <span><em>{{ 'customer.account_details.name_des' | t }}</em></span>
+        
+        <div class="t4s_field t4s-pr t4s_mb_20">
+          <label for="CustomerEmail"> {{ 'customer.account_details.email' | t }} <span class="required">*</span> </label>
+          <input
+            class="t4s_frm_input"
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+          >
+        </div>
+
+       <h3 style="border-bottom: 1px solid #f1f1f1; font-size: 1em; font-weight: 700; margin: 30px 0 15px; padding-bottom: 10px; text-transform: uppercase; width: 100%;">PASSWORD CHANGE</h3>
+        
+        <div class="t4s_field t4s-pr t4s_mb_20">
+          <label for="CustomerPassword"> {{ 'customer.account_details.current_password' | t }} <span class="required">*</span> </label>
+          <input
+            class="t4s_frm_input"
+            type="password"
+            value=""
+            name="customer[current_password]"
+            id="CustomerPassword"
+            autocomplete="current-password"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+          >
+        </div>
+        
+        <div class="t4s_field t4s-pr t4s_mb_20">
+          <label for="CustomerNewPassword"> {{ 'customer.account_details.new_password' | t }} <span class="required">*</span> </label>
+          <input
+            class="t4s_frm_input"
+            type="password"
+            value=""
+            name="customer[new_password]"
+            id="CustomerNewPassword"
+            autocomplete="new-password"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+          >
+        </div>
+        
+        <div class="t4s_field t4s-pr t4s_mb_20">
+          <label for="CustomerConfirmNewPassword"> {{ 'customer.account_details.confirm_password' | t }} <span class="required">*</span> </label>
+          <input
+            class="t4s_frm_input"
+            type="password"
+            value=""
+            name="customer[confirm_password]"
+            id="CustomerConfirmNewPassword"
+            autocomplete="new-password"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+          >
+        </div>
+        
+          <div class="t4s_field t4s_mb_20">
+            <button class="t4s_btn_submmit t4s-btn-effect-default t4s-btn t4s-btn-base t4s-btn-{{ se_stts.btn_width }}-width t4s-btn-style-{{ se_stts.button_style }} t4s-btn-size-{{ se_stts.btns_size }} t4s-btn-color-{{ se_stts.btns_cl }} {% if se_stts.button_style == 'default' or se_stts.button_style == 'outline' %}t4s-btn-effect-{{ se_stts.button_effect }}{% endif %}">
+              {{ 'customer.account_details.save_changes' | t }}
+            </button>
+            </div>
+     </form>
+        
+    </div>
+    
+  </div>
+</div>
+
+{%- schema -%}
+{
+  "name": "Account Details",
+  "tag": "section",
+  "class": "t4s-section t4s-section-customers t4s-container",
+  "settings": [],
+  "presets": [
+      {
+        "name": "Customer Account Details"
+      }
+    ]
+}
+{% endschema %}

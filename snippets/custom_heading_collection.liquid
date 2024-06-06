@@ -1,0 +1,86 @@
+
+{% assign product_count = collection.products_count %}
+
+
+<div class="shop-page-title category-page-title page-title ">
+    <div class="page-title-inner t4s-container">
+        <div class="shop-all-block">
+            <div class="flex-col flex-grow medium-text-center">
+                <h1 class="shop-page-title is-xlarge">{{ collection.title }}</h1>
+                <div class="is-smaller">
+                    <nav class="shop-all-breadcrumbs"><a href="/">Home</a> <span class="divider" style="padding: 0 5px;">/</span>{{ collection.title }}</nav>
+                </div>
+            </div>
+            <div class="shopify-result-box flex-col medium-text-center">
+                <p class="shopify-result-count hide-for-medium">
+                    Showing all {{ product_count }} results</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .shop-page-title {
+        width: 100%;
+    }
+
+    .shop-all-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    .shop-all-block h1 {
+        font-size: 1.5em;
+        font-weight: 700;
+        font-style: normal;
+        font-family: Poppins, sans-serif;
+        margin-bottom: .5em;
+        margin-top: 0;
+        text-rendering: optimizeSpeed;
+        width: 100%;
+    }
+
+    .shop-all-block nav {
+        text-transform: uppercase;
+    }
+
+    .shop-all-block .is-smaller {
+        line-height: 1.2;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .shop-all-block .is-smaller .shop-all-breadcrumbs {
+        color: #222;
+        font-weight: 700;
+        letter-spacing: 0;
+        padding: 0;
+    }
+
+
+    .shop-all-block .is-smaller .shop-all-breadcrumbs a {
+        color: hsla(0, 0%, 40%, .7);
+        font-weight: 400;
+    }
+
+    .shop-all-block .is-smaller a:hover {
+        color: #111;
+    }
+
+    .shop-all-block .shopify-result-count {
+        margin: 0px;
+    }
+
+    @media (max-width: 768px) {
+
+        .shop-all-block .shopify-result-box {
+            display: none;
+        }
+
+        .shop-all-block {
+            justify-content: center;
+        }
+    }
+</style>

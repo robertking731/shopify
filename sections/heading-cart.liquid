@@ -1,0 +1,88 @@
+<div class="checkout-page-title page-title">
+	<div class="page-title-inner container">
+	  <div class="flex-col flex-grow medium-text-center">
+	 	 <nav class="breadcrumbs flex-row flex-row-center heading-font checkout-breadcrumbs text-center strong h4 none">
+            <a href="/cart/" class="current">
+                            Shopping Cart  	   	</a>
+            <span class="divider hide-for-small">{%- render 'line-angle-right-icon' -%}</span>
+            <a href="/checkout/" class="hide-for-small">
+                            Checkout details  	   </a>
+            <span class="divider hide-for-small">{%- render 'line-angle-right-icon' -%}</span>
+            <a href="#" class="no-click hide-for-small">
+                        Order Complete  	   </a>
+		 </nav>
+	  </div>
+	</div>
+</div>
+
+<style>
+.checkout-page-title {
+    max-width: 100%;
+}
+
+.checkout-page-title .container {
+    max-width: 1380px;
+    padding-top: 20px;
+    margin: auto;
+}
+
+.checkout-page-title .container .flex-grow {
+    padding: 15px 15px;
+}
+
+.checkout-page-title .flex-row {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout-page-title .heading-font a {
+    font-weight: 400;
+    font-style: normal;
+    font-family: Poppins, sans-serif;
+    color: #ccc;
+    text-align: center;
+    font-size: 1.125em;
+    align-items: center;
+    color: #ccc;
+    display: inline-flex;
+}
+
+.checkout-page-title .heading-font a:hover {
+    color: #111;
+}
+
+.checkout-page-title .heading-font .current {
+    color: #111;
+    font-weight: 400;
+}
+
+.checkout-page-title .heading-font .no-click {
+    cursor: default;
+}
+
+.checkout-page-title .heading-font .no-click:hover {
+    color: #ccc;
+}
+.checkout-page-title .heading-font span {
+    display: flex;
+}
+
+.checkout-page-title .heading-font span svg {
+    width: 30px;
+    height: 12px;
+    fill: #ccc;
+}
+
+.checkout-page-title .heading-font .hide-for-small {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .checkout-page-title .heading-font .hide-for-small {
+        display: none;
+    }
+}
+
+</style>

@@ -1,0 +1,247 @@
+<!doctype html>
+{%- liquid
+  assign t_name = request.page_type
+  assign iso_code = request.locale.iso_code
+  assign use_rtl = settings.use_rtl
+  if use_rtl == '3'
+    assign lis_rtl = 'ar; dv; ha; he; ku; fa; ur; ug; ps; yi'
+    assign iso_code_ck = iso_code | split: '-' | first
+  else
+    assign lis_rtl = settings.list_rtl
+    assign iso_code_ck = iso_code
+  endif
+  if use_rtl == '1'
+    assign isRTL = true
+  elsif lis_rtl contains iso_code_ck and use_rtl == '2' or use_rtl == '3'
+    assign isRTL = true
+  else
+    assign isRTL = false
+  endif
+  assign body_img = settings.body_bg_image
+  if body_img != blank and settings.general_layout == 'boxed'
+    assign class_lazy = 'lazyloadt4s'
+  endif
+-%}
+{%- capture class_html -%}
+t4sp-theme t4s-wrapper__{{ settings.general_layout }} rtl_{{ isRTL }} swatch_color_style_{{ settings.swatch_color_style }} pr_border_style_{{ settings.pr_border_style }} pr_img_effect_{{ settings.pr_img_effect }} enable_eff_img1_{{ settings.enable_eff_img1 }} badge_shape_{{ settings.badge_shape }} css_for_wis_app_{{ settings.enable_css_wis }}{% if settings.use_cus_lz and settings.cus_lz %} t4s-lzcus-true{% endif %} shadow_round_img_{{ settings.enable_shadow_round_img }} t4s-header__{{ settings.header_design }} is-remove-unavai-{{ settings.variant_remove }} t4_compare_{{ settings.enable_compe }}{% if settings.type_qv == '1' %} t4s-sidebar-qv{% endif %} t4s-cart-count-{{ cart.item_count }} t4s-pr-ellipsis-{{ settings.enable_pr_ellipsis }}
+{%- endcapture -%}
+<html
+  class="{{ class_html }} no-js"
+  lang="{{ iso_code }}"
+  {% if isRTL %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+    {{shop.metafields.CCR.shopat_script}} 
+
+    <script type="text/javascript">
+        if (window.location.pathname === "/cart") {
+          // Redirect to the specified URL
+          window.location.href = 'https://shop.fixbiome.com';
+        }
+    </script>
+
+    <script type="text/javascript">
+      // Function to handle the setting and getting of cookies
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+    
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+    
+      // Main logic for controlling the popup display
+      document.addEventListener('DOMContentLoaded', function() {
+        var formId = 'TdTqWw';
+        var cookieName = 'klaviyoFormClosed_' + formId;
+    
+        // Check if the cookie exists
+        var formLastClosed = getlocalhost.getItem(cookieName);
+        var shouldShowForm = true;
+    
+        // If the cookie exists, we do not show the form
+        if (formLastOpened) {
+          var lastClosedDate = new Date(formLastOpened);
+          var currentDate = new Date();
+          var differenceInDays = Math.ceil((currentDate - lastClosedDate) / (1000 * 60 * 60 * 24));
+    
+          if(differenceInDays < 5) {
+            shouldShowForm = false;
+            console.log('The Klaviyo form was closed less than 5 days ago. Not showing the form.');
+          }
+        }
+    
+        // If the cookie doesn't exist or it's been more than 5 days, show the form
+        if (shouldShowForm) {
+          window._klOnsite = window._klOnsite || [];
+          window._klOnsite.push(['openForm', 'X4VwbH']);
+        }
+      });
+    </script>
+    
+    <script src="https://shop.fixbiome.com/cdn/shop/t/4/assets/lazysizes.min.js?v=19113999703148210021711975986"></script>
+
+    <script>
+        window.YETT_BLACKLIST = [
+            /cozycountryredirectiii.addons.business/js/eggbox/14425/script_ae13868e8f0c4a12b6204154e39c0148\.js$/,
+            /shop.fixbiome.com/cdn/shop/t/4/assets/theme.min\.js$/,
+            /shop.fixbiome.com/cdn/shop/t/4/assets/widget.min\.js$/,
+            /script.hotjar.com/modules.305879d9d5e96288a7f4\.js$/,
+            /shop.fixbiome.com/cdn/shopifycloud/shopify/assets/shop_events_listener-61fa9e0a912c675e178777d2b27f6cbd482f8912a6b0aa31fa3515985a8cd626\.js$/,
+            /shop.fixbiome.com/cdn/shopifycloud/boomerang/shopify-boomerang-1.0.0.min\.js$/,
+            /shop.fixbiome.com/cdn/wpm/b2618fd15wf7957246p4fe5c48am4cbbec41m\.js$/,
+            /shop.fixbiome.com/cdn/s/trekkie.storefront.dd626a6a6fbdab104f8779acc4331c330134c832.min\.js$/,
+            /shop.fixbiome.com/cdn/shopifycloud/shopify/assets/storefront/load_feature-9f951eb7d8d53973c719de211f807d63af81c644e5b9a6ae72661ac408d472f6\.js$/,
+            /shop.fixbiome.com/cdn/shopifycloud/shopify/assets/shopify_pay/storefront-80e528be853eac23af2454534897ca9536b1d3d04aa043b042f34879a3c111c8\.js$/,
+            /shop.fixbiome.com/checkouts/internal/preloads\.js$/,
+            /static.klaviyo.com/onsite/js/default~signup_forms~onsite-triggering.0df0318a329ba96c7240\.js$/,
+            /static.klaviyo.com/onsite/js/vendors~reviews~atlas~ClientStore.dd9d02dd9fc376e8dd48\.js$/,
+            /static.klaviyo.com/onsite/js/Render.682930b188d152424f8b\.js$/,
+            /static.klaviyo.com/onsite/js/ClientStore.b577ba6ef5ccc0874039\.js$/,
+        ]
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KN38V6L');</script>
+    <!-- End Google Tag Manager -->
+
+    
+    <script src="https://unpkg.com/yett"></script>
+    
+
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, height=device-height, minimum-scale=1.0, maximum-scale=1.0"
+    >
+    <meta name="theme-color" content="{{ settings.body_bg }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="shortcut icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+    {%- endif -%}
+    {%- if settings.favicon_apple != blank -%}
+      <link
+        rel="apple-touch-icon-precomposed"
+        type="image/png"
+        sizes="152x152"
+        href="{{ settings.favicon_apple | image_url: width: 152 }}"
+      >
+    {%- endif -%}
+
+    {%- if settings.font_source == '1'
+      and settings.fnt_fm_sp1.system? == false
+      or settings.fnt_fm_sp2.system? == false
+      or settings.fnt_fm_sp3.system? == false
+    -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endif -%}
+
+    {%- if t_name != 'list-collections' -%}
+      {%- capture seo_title -%}
+      {%- if template == 'search' and search.performed == true -%}{{ 'search.general.heading' | t: count: search.results_count }}: {{ 'search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}{%- elsif template == 'search.wishlist' %}{{ 'wishlist_page.meta' | t }}{%- elsif template == 'search.compare' %}{{ 'compare_page.meta' | t }}{%- else -%}{{ page_title }}{%- endif -%}
+      {%- if current_tags -%}{%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}{%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{%- endif -%}
+      {%- assign escaped_page_title = page_title | escape -%}
+      {%- unless escaped_page_title contains shop.name %} &ndash; {{ shop.name }}{%- endunless -%}
+    {%- endcapture -%}
+      <title>{{ seo_title | strip }}</title>
+      <meta
+        name="description"
+        content="{{ page_description | default: shop.description | default: shop.name | escape }}"
+      >
+    {%- else -%}
+      <title>{{ 'list_collections.meta_title' | t | escape }}</title
+      ><meta name="description" content="{{ 'list_collections.meta_description' | t | escape }}">
+    {%- endif -%}
+
+    {%- render 'meta-tags', t_name: t_name -%}
+
+    <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+    <script src="{{ 'global.min.js' | asset_url }}" defer="defer"></script>
+    {{ content_for_header }} 
+    {%- render 'head_assets', t_name: t_name, isRTL: isRTL -%}
+
+	<script>
+     function loadScript() {
+       window.yett.unblock()
+     }
+     let width = window.innerWidth;
+      if (width > 764) {
+        setTimeout(loadScript, 7000);
+      } else {
+        setTimeout(loadScript, 10000);
+      }
+    </script>
+    
+  </head>
+
+  <body
+    class="template-{{ request.page_type | handle }} {{ class_lazy }}"
+    {% if body_img != blank %}
+      data-bgset="{{ body_img | image_url: width: 1 }}" data-optimumx="2" data-sizes="auto"
+    {% endif -%}
+  >
+    {% if isRTL %}
+      <script type="text/javascript" id="t4s-flicker-fix">
+        // Flicker fix.
+      </script>
+    {% endif -%}
+    <a class="skip-to-content-link visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_text' | t }}</a>
+    <div class="t4s-close-overlay t4s-op-0"></div>
+
+    <div class="t4s-website-wrapper">
+      {%- render 'header', t_name: t_name -%}
+
+      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      <footer id="t4s-footer">
+        {%- section 'custom-footer1' -%}
+        {%- section 'custom-footer2' -%}
+      </footer>
+    </div>
+    <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+    <ul hidden class="t4s-d-none">
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+    {%- render 'render_bottom' -%}
+    <script
+      async
+      id="gorgias-chat-widget-install-v3"
+      src="https://config.gorgias.chat/bundle-loader/01HJD8Q7VRAR9WEW7BPQZ8V3VZ"
+    ></script>
+    
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@slightlyoff/lite-vimeo@0.1.1/lite-vimeo.js"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KN38V6L"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  </body>
+</html>

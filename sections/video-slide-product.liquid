@@ -1,0 +1,346 @@
+{% schema %}
+    {
+      "name": "Product - Video Slide",
+      "max_blocks": 49,
+      "blocks": [
+        {
+          "type": "video",
+          "name": "Video ID",
+          "settings": [
+            {
+              "type": "text",
+              "id": "video_id",
+              "label": "Video ID",
+              "default": "Please enter YouTube video ID"
+            }
+          ],
+          "limit": 50
+        }
+      ],
+      "presets": [{
+        "name": "Video Slide"
+      }]
+    }
+    {% endschema %}
+    
+    <div class="product-reviews-slide" style="padding: 50px 15px 40px 15px; background-color: rgb(250, 250, 250); ">
+        <div style="text-align: center;">
+            <h2 style="color: #51534a; font-family: Poppins, sans-serif; font-size: 1.6em; font-weight: 700;">Hear what our customers have to say</h2>
+        </div>
+    </div>
+    
+    {% if section.blocks.size > 0 %}
+      <div class="product-reviews-slide" style="background-color: rgb(250, 250, 250); padding-bottom: 60px;">
+        <div class="layout">
+        <div class="slider-container">
+          <div class="slider">
+            {% for block in section.blocks %}
+                {% if block.type == 'video' %}
+                <div class="slide">
+                  <div class="slide-box">
+                    <div class="video-box" style="height: 450px;">
+                      <lite-youtube videoid="{{ block.settings.video_id }}" style="height: 100%; padding: 0; "></lite-youtube>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <!-- Add more slides as needed -->
+          </div>
+          <ol class="dots_navigation">
+            <!-- Add more dots_navigation corresponding to each slide -->
+          </ol>
+          <div class="slider-controls">
+          </div>
+        </div>
+      </div>
+      </div>
+    {% endif %}
+    
+    <style>
+      .product-reviews-slide {
+        width: 100%;
+      }
+    
+      .product-reviews-slide .layout {
+          max-width: 450px;
+          /* padding: 100px 40px 0 40px; */
+          margin: auto;
+          padding: 0;
+        }
+    
+        .product-reviews-slide .slider-container {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          margin: auto;
+        }
+    
+        .product-reviews-slide .slider-container .slider {
+          width: 100%;
+          display: flex;
+          transition: transform 0.5s ease;
+          overflow-x: unset;
+          overflow-y: unset;
+        }
+    
+        .product-reviews-slide .slider-container .slide {
+          /* flex: 0 0 100%; */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+        }
+    
+        .product-reviews-slide .slider-container .slide a {
+          width: 100%;
+        }
+    
+        .product-reviews-slide .slider-container .slide img {
+          width: 100%;
+          max-width: 100%;
+          max-height: 100%;
+          transition: transform 0.5s ease;
+          cursor: pointer;
+          /* Add cursor pointer to indicate clickable */
+          transition: transform 0.3s ease;
+        }
+    
+        .product-reviews-slide .slider-container .dots_navigation {
+          text-align: center;
+          margin-top: 10px;
+          padding: 0px;
+    
+        }
+    
+        .product-reviews-slide .slider-container .Dots {
+          display: inline-block;
+          margin: 0 5px;
+          cursor: pointer;
+          width: 12px;
+          height: 12px;
+          background-color: #999393;
+          border-radius: 50%;
+        }
+    
+        .product-reviews-slide .slider-container .dot-selected {
+          background-color: #eaa794;
+        }
+    
+        .product-reviews-slide .slider-container .slider-controls {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin-top: -38px;
+        }
+    
+        .product-reviews-slide .slider-container .control-button {
+          cursor: pointer;
+          padding: 10px;
+          background-color: transparent;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          font-size: 35px;
+          margin: 0 10px;
+          transition: all 0.3s ease;
+          color: rgb(153, 147, 147);
+          font-weight: 100;
+        }
+    
+        /* .control-button:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      } */
+        .product-reviews-slide .slider-container .control-button:hover {
+          color: #eaa794;
+        }
+    
+        .product-reviews-slide .slider-container .slide-box {
+          width: 100%;
+          padding: 0;
+        }
+    
+        /* Responsive slides */
+        @media (max-width: 599px) {
+    
+          /* Mobile styles */
+          .product-reviews-slide .slider-container .slide {
+            width: 100%;
+            /* Show one full slide */
+            flex: 0 0 100%;
+          }
+        }
+    
+        @media (min-width: 600px) and (max-width: 899px) {
+    
+          /* Tablet styles */
+          .product-reviews-slide .slider-container .slide {
+            width: 100%;
+            /* Show half of a slide */
+            flex: 0 0 100%;
+          }
+        }
+    
+        @media (min-width: 900px) {
+    
+          /* Desktop styles */
+          .product-reviews-slide .slider-container .slide {
+            width: 100%;
+            /* Show one third of a slide */
+            flex: 0 0 100%;
+          }
+        }
+    
+    </style>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          function getSlidesToShow() {
+            // Determine how many slides to show based on window width
+            if (window.innerWidth < 600) {
+              return 1; // Mobile
+            } else if (window.innerWidth >= 600 && window.innerWidth < 900) {
+              return 1; // Tablet
+            } else {
+              return 1; // Desktop
+            }
+          }
+    
+          const slider = document.querySelector(".product-reviews-slide .slider-container .slider");
+          const slides = document.querySelectorAll(".product-reviews-slide .slider-container .slide");
+          let dotCount = Math.ceil(slides.length / getSlidesToShow());
+          let html = "";
+          let html_1 = "";
+          
+          for (let i = 0; i < dotCount; i++) {
+            html += '<li class="Dots" data-index="' + i + '"></li>';
+          }
+    
+          html_1 = '<button class="control-button" id="prevBtn_1">&#10094;</button><button class="control-button" id="nextBtn_1">&#10095;</button>'
+          document.querySelector(".product-reviews-slide .slider-controls").innerHTML = html_1;
+          document.querySelector(".product-reviews-slide .dots_navigation").innerHTML = html;
+          html = '';
+    
+          let dots_navigation = document.querySelectorAll(".product-reviews-slide .slider-container .Dots");
+          let currentIndex = 0;
+          let startX;
+          let cnt;
+          let dotIndex = 1;
+    
+          function showSlide(ct, moveType) {
+            // Update the slider translation based on slide width and current index
+            let index = ct;
+            const slideWidth = slider.clientWidth / getSlidesToShow();
+            let maxSlideWidth = slides.length * slideWidth;
+            if (maxSlideWidth - (slideWidth * getSlidesToShow()) < index * slideWidth) {
+              if (moveType == "dot") {
+                slider.style.transform = `translateX(-${(index - (slides.length % getSlidesToShow()) + 1) * slideWidth}px)`;
+                resetDotColors(ct, "dot");
+                return;
+              }
+              slider.style.transform = `translateX(-${0 * slideWidth}px)`;
+              resetDotColors(ct, "");
+              return;
+            }
+            console.log("dd", ct)
+            slider.style.transform = `translateX(-${index * slideWidth}px)`;
+            resetDotColors(ct, "");
+          }
+    
+    
+          function resetDotColors(ct, dt) {
+            dots_navigation.forEach(dot => {
+              dot.style.backgroundColor = "#999393";
+            });
+    
+            if (dt == "dot") {
+              dots_navigation[ct/getSlidesToShow()].style.backgroundColor = "#eaa794";
+              return;
+            }
+    
+            if (dt == "ed") {
+              dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+              return;
+            }
+            if (ct == 0) {
+              dots_navigation[0].style.backgroundColor = "#eaa794";
+            } else {
+              if (ct % getSlidesToShow() == 0) {
+                dots_navigation[ct / getSlidesToShow()].style.backgroundColor = "#eaa794";
+                return;
+              }
+              if ((dotCount - 1) * getSlidesToShow() - 1 == ct) {
+                console.log(ct, dotCount)
+                dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+                return;
+              }
+              dots_navigation[Math.ceil(ct / getSlidesToShow()) - 1].style.backgroundColor = "#eaa794";
+            }
+          }
+    
+          function prevSlide() {
+            currentIndex = currentIndex - 1;
+            if (currentIndex < 0) {
+              currentIndex = slides.length - getSlidesToShow();
+            }
+            showSlide(currentIndex, "");
+          }
+    
+          function nextSlide() {
+            currentIndex = currentIndex + 1;
+            if (currentIndex > slides.length - getSlidesToShow()) {
+              currentIndex = 0;
+            }
+            showSlide(currentIndex, "");
+          }
+    
+          dots_navigation.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+              showSlide(getSlidesToShow() * index, "dot");
+            });
+          });
+    
+          document.getElementById("prevBtn_1").addEventListener("click", function() {
+            prevSlide();
+          });
+    
+          document.getElementById("nextBtn_1").addEventListener("click", function() {
+            nextSlide();
+          });
+    
+          // Swipe Gesture
+          document.querySelector(".product-reviews-slide .slider-container").addEventListener("touchstart", touchStart);
+          document.querySelector(".product-reviews-slide .slider-container").addEventListener("touchmove", touchMove);
+    
+          function touchStart(e) {
+            startX = e.touches[0].clientX;
+          }
+    
+          function touchMove(e) {
+            if (!startX) return;
+    
+            let endX = e.touches[0].clientX;
+            let diffX = startX - endX;
+    
+            if (diffX > 0) {
+              // Swiped left
+              nextSlide();
+            } else {
+              // Swiped right
+              prevSlide();
+            }
+    
+            startX = null;
+          }
+    
+          // Show the first slide initially
+          showSlide(currentIndex, "");
+        });
+      </script>
+    
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>

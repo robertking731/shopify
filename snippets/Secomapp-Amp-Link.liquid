@@ -1,0 +1,30 @@
+{%- if routes.root_url == '/' -%}
+    {%- capture short_root_path1 -%}{{ routes.root_url }}{%- endcapture -%}
+    {%- capture root_path1 -%}{{ shop.url }}{{ routes.root_url }}{%- endcapture -%}
+    {%- capture short_root_path -%}{{ routes.root_url }}{%- endcapture -%}
+    {%- capture root_path -%}{{ shop.url }}{%- endcapture -%}
+    {%- capture root_path_amp -%}{{ shop.url }}{{ routes.root_url | append: 'a/amp-sb' }}{%- endcapture -%}
+    {%- capture root_path_amp1 -%}{{ shop.url }}{{ routes.root_url | append: 'a/amp-sb/' }}{%- endcapture -%}
+  {%- else -%}
+    {%- capture short_root_path1 -%}{{ routes.root_url }}/{%- endcapture -%}
+    {%- capture root_path1 -%}{{ shop.url }}{{ routes.root_url }}/{%- endcapture -%}
+    {%- capture short_root_path -%}{{ routes.root_url }}{%- endcapture -%}
+    {%- capture root_path -%}{{ shop.url }}{{ routes.root_url }}{%- endcapture -%}
+    {%- capture root_path_amp -%}{{ shop.url }}{{ routes.root_url | append: '/a/amp-sb' }}{%- endcapture -%}
+    {%- capture root_path_amp1 -%}{{ shop.url }}{{ routes.root_url | append: '/a/amp-sb/' }}{%- endcapture -%}
+  {%- endif -%}
+  {%- if url == shop.url or url == root_path1 or url == root_path or url == short_root_path or url == short_root_path1 or url =='/' or url ==''
+      -%}{{ root_path_amp }}/home{%- 
+  elsif url contains root_path 
+      -%}{{ url | replace: root_path, root_path_amp }}{%- 
+  elsif  url contains shop.url
+      -%}{{ url | replace:shop.url,root_path_amp }}{%- 
+  elsif  url contains 'https://'
+      -%}{{ url }}{%- 
+  elsif  url contains short_root_path1 and short_root_path1 !='/'
+      -%}{{ url | replace:short_root_path1,root_path_amp1 }}{%- 
+  elsif url == '#' or url == 'javascript:;'
+      -%}{{ url }}{%- 
+  else
+      -%}{{ root_path_amp }}{{ url }}{%- 
+  endif -%}

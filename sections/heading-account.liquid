@@ -1,0 +1,82 @@
+{% liquid 
+  assign se_stts = section.settings
+%}
+  
+  
+<div class="heading-account">
+  <div class="heading-account-container">
+    <div class="heading-account-row">
+        <div style="width: 100%;">
+            <h1 style="text-transform: uppercase;">{{ se_stts.header_title }}</h1>
+          {% if se_stts.header_subtitle != blank %}
+            <small style="text-transform: uppercase;">{{ se_stts.header_subtitle }}</small>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Heading Account",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header_title",
+      "label": "Header Title",
+      "default": "My Account"
+    },
+    {
+      "type": "text",
+      "id": "header_subtitle",
+      "label": "Header Subtitle",
+      "default": "Dashboard"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+    .heading-account {
+        width: 100%;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid #ececec;
+        border-top: 1px solid #ececec;
+    }
+
+    .heading-account-container {
+        max-width: 1380px;
+        margin: auto;
+    }
+
+    .heading-account-row {
+        padding: 15px;
+        text-align: left;
+    }
+
+    .heading-account-row h1 {
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        font-weight: 700;
+        font-style: normal;
+        font-family: Poppins, sans-serif;
+        color: #51534a;
+        font-size: 1.7em;
+        width: 100%;
+        margin: 0;
+    }
+
+    .heading-account-row small {
+        line-height: 1.2;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 80%;
+    letter-spacing: .05em;
+    font-weight: 400;
+    text-align: left;
+    font-family: "Nunito Sans", sans-serif;
+    }
+
+</style>

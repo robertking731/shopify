@@ -1,0 +1,25 @@
+{% comment %}
+  File: snippets/header-collection.liqui
+
+  collection: {image, url, title}
+  title: title
+{% endcomment %}
+
+{%- assign collection_title = title | upcase -%}
+<a href="{{ collection.url }}">
+  <div class="collection-image-box">
+    <img loading="lazy"
+      src="{{ collection.image | img_url: 'compact' }}"
+      width=""
+      height=""
+      alt="{{ collection.title }}"
+    >
+  </div>
+  <div class="collection-title">
+    <strong>{{ collection_title }}</strong>
+  </div>
+</a>
+
+{% style %}
+  .
+{% endstyle %}

@@ -1,0 +1,13 @@
+{%- liquid
+   if product.metafields.custom.product_id_for_stamped_reviews != blank
+     assign product_stamped_id =  product.metafields.custom.product_id_for_stamped_reviews
+   else 
+     assign product_stamped_id = product.id
+    endif
+-%}
+
+<!-- Start of Judge.me code --> 
+  <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+    {{ product.metafields.judgeme.badge }} 
+  </div> 
+<!-- End of Judge.me code -->

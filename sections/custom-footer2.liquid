@@ -1,0 +1,74 @@
+{% schema %}
+{
+    "name": "custom-footer2",
+    "settings": [
+
+    ],
+    "presets": [
+        {
+            "name": "Footer",
+            "category": "Footer"
+        }
+    ]
+}
+{% endschema %}
+
+<div class="absolute-footer light medium-text-center text-center">
+  <div class="container clearfix">
+    <div class="footer-secondary pull-right">
+      <div class="payment-icons inline-block">
+        {% render 'footer-payment-icons' %}
+      </div>
+    </div>
+    <div class="footer-primary pull-left">
+      <div class="copyright-footer">
+        Copyright {{ 'now' | date: '%Y' }} © <strong>{{ shop.name }}</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .absolute-footer {
+    background-color: #ffeadb;
+  }
+
+  .absolute-footer .footer-secondary {
+    display: flex;
+    justify-content: center;
+  }
+
+  .absolute-footer .payment-icons {
+    display: flex;
+  }
+
+  .absolute-footer .text-center > div {
+    margin: auto;
+  }
+  .text-center .pull-right {
+    float: none;
+  }
+
+  .payment-icons .payment-icon {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: inline-block;
+    margin: 3px 3px 0;
+    opacity: 0.6;
+    padding: 3px 5px 5px;
+    transition: opacity 0.3s;
+    width: 45px;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .copyright-footer {
+    text-align: center;
+    padding: 10px 0 20px 0;
+  }
+  .payment-icons .payment-icon:hover {
+      opacity: 1;
+    }
+{% endstyle %}

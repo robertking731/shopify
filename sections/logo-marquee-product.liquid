@@ -1,0 +1,72 @@
+{% schema %}
+  {
+    "name": "Logo marquee",
+    "settings": []
+  }
+{% endschema %}
+
+<div id="logo-marquee" style="width: 100%;">
+    <div class="logo-marquee-container">
+        <div style="display: flex;">
+            <div class="inner-item">
+                {%- render 'cbs-logo-grey-icon' -%}
+            </div>
+            <div class="inner-item">
+                {%- render 'nbc-logo-grey-icon' -%}
+            </div>
+            <div class="inner-item">
+                {%- render 'usa-today-logo-grey-icon' -%}
+            </div>
+            <div class="inner-item">
+                {%- render 'fox-logo-grey-icon' -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #logo-marquee {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: rgb(221, 221, 221);
+        align-items: center;
+        display: flex;
+        flex-flow: row;
+        min-height: auto;
+        position: relative;
+        width: 100%;
+        height: 60px;
+    }
+
+    #logo-marquee svg {
+        height: 30px;
+        width: 100%;
+    }
+
+    .logo-marquee-container {
+        max-width: 100%;
+        margin: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .logo-marquee-container .inner-item {
+        width: 25%;
+        display: flex;
+    }
+    
+    @media (min-width: 768px) {
+        #logo-marquee svg {
+            height: 40px;
+        }
+    }
+
+    @media (min-width: 900px) {
+        .logo-marquee-container {
+            width: 50%;
+            margin: auto;
+        }
+    }
+
+</style>

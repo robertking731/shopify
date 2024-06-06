@@ -1,0 +1,258 @@
+{% comment %}
+  Renders gift card recipient form.
+  Accepts:
+  - product: {Object} product object.
+  - form: {Object} the product form object.
+  - section: {Object} section to which this snippet belongs.
+
+  Usage:
+  {% render 'gift-card-recipient-form', product: product, form: form, section: section %}
+{% endcomment %}
+
+<div class="customer">
+  {%- assign gift_card_recipient_control_flag = 'properties[__shopify_send_gift_card_to_recipient]' -%}
+  <script src="{{ 'recipient-form.js' | asset_url }}" defer="defer"></script>
+  <recipient-form class="recipient-form" data-section-id="{{ section.id }}" data-product-variant-id="{{ product.selected_or_first_available_variant.id }}">
+    <input id="Recipient-checkbox-{{ section.id }}" type="checkbox" name="{{ gift_card_recipient_control_flag }}" disabled>
+    <label class="recipient-checkbox" for="Recipient-checkbox-{{ section.id }}">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+      </svg>
+      <svg aria-hidden="true" class="icon icon-checkmark" width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>{{ 'recipient.form.checkbox' | t }}</span>
+    </label>
+    <p id="Recipient-fields-live-region-{{ section.id }}" class="visually-hidden" role="status"></p>
+    <div class="recipient-fields">
+      <hr>
+      <div class="recipient-fields__field">
+        <div class="field">
+          <input class="field__input" id="Recipient-email-{{ section.id }}" type="email" placeholder="{{ 'recipient.form.email' | t }}" name="properties[Recipient email]" value="{{ form.email }}" {% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="RecipientForm-email-error-{{ section.id }}"{% endif %}>
+          <label class="field__label" for="Recipient-email-{{ section.id }}">
+            <span class="recipient-email-label required">{{ 'recipient.form.email_label' | t }}</span>
+            <span class="recipient-email-label optional">
+              {{- 'recipient.form.email_label_optional_for_no_js_behavior' | t -}}
+            </span>
+          </label>
+        </div>
+        
+      </div>
+
+      <div class="recipient-fields__field">
+        <div class="field">
+          <input class="field__input" autocomplete="name" type="text" id="Recipient-name-{{ section.id }}" name="properties[Recipient name]" placeholder="{{ 'recipient.form.name' | t }}" value="{{ form.name }}" {% if form.errors contains 'name' %} aria-invalid="true" aria-describedby="RecipientForm-name-error-{{ section.id }}"{% endif %}>
+          <label class="field__label" for="Recipient-name-{{ section.id }}">
+            {{- 'recipient.form.name_label' | t -}}
+          </label>
+        </div>
+      </div>
+
+      <div class="recipient-fields__field">
+        {%- assign max_chars_message = 200 -%}
+        {%- assign max_chars_message_rendered = 'recipient.form.max_characters' | t: max_chars: max_chars_message -%}
+        {%- assign message_label_rendered = 'recipient.form.message_label' | t -%}
+        <div class="field">
+          <textarea rows="10" id="Recipient-message-{{ section.id }}" class="text-area field__input" name="properties[Message]" maxlength="{{ max_chars_message }}" placeholder="{{ 'recipient.form.message' | t }}" aria-label="{{ message_label_rendered }} {{ max_chars_message_rendered }}"{% if form.errors contains 'message' %} aria-invalid="true" aria-describedby="RecipientForm-message-error-{{ section.id }}"{% endif %}
+          >{{ form.message }}</textarea>
+          <label class="form__label field__label" for="Recipient-message-{{ section.id }}">
+            {{ message_label_rendered }}
+          </label>
+        </div>
+
+        <label class="form__label recipient-form-field-label recipient-form-field-label--space-between">
+          <span>{{ max_chars_message_rendered }}</span>
+        </label>
+      </div>
+
+      <div class="recipient-fields__field">
+        <div class="field">
+          <input class="field__input text-body" autocomplete="send_on" type="date" id="Recipient-send-on-{{ section.id }}" name="properties[Send on]" placeholder="{{ 'recipient.form.send_on' | t }}" pattern="\d{4}-\d{2}-\d{2}" value="{{ form.send_on }}" {% if form.errors contains 'send_on' %} aria-invalid="true" aria-describedby="RecipientForm-send_on-error-{{ section.id }}" {% endif %}>
+          <label class="form__label field__label" for="Recipient-send-on-{{ section.id }}">
+            {{ 'recipient.form.send_on_label' | t }}
+          </label>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" name="{{ gift_card_recipient_control_flag }}" value="if_present" id="Recipient-control-{{ section.id }}">
+    <input type="hidden" name="properties[__shopify_offset]" value="" id="Recipient-timezone-offset-{{ section.id }}" disabled>
+  </recipient-form>
+</div>
+<style>
+.customer {
+  width: 100%;
+}
+.hidden {
+  display: none!important;
+}
+.field {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+.field__input {
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 6px;
+  color: #000;
+}
+.field__input::placeholder,
+.customer .field input::placeholder {
+  opacity: 0;
+}
+.field__label,
+.customer .field label {
+  --inputs-border-width: 1px;
+  --duration-short: .1s;
+  font-size: 14px;
+  left: calc(var(--inputs-border-width) + 15px);
+  top: calc(10px + var(--inputs-border-width));
+  margin-bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: top var(--duration-short) ease,font-size var(--duration-short) ease;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+.field__input:focus~.field__label,
+.field__input:not(:placeholder-shown)~.field__label,
+.field__input:-webkit-autofill~.field__label,
+.customer .field input:focus~label > *,
+.customer .field input:not(:placeholder-shown)~label > *,
+.customer .field input:-webkit-autofill~label > * {
+  font-size: 10px;
+  top: calc(var(--inputs-border-width) + 2px);
+  left: calc(var(--inputs-border-width) + 15px);
+  letter-spacing: .04px;
+}
+/* Recipient form */
+.recipient-form {
+  /* (2.88[line-height] - 16px) / 2 */
+  --recipient-checkbox-margin-top: 6.4px;
+
+  display: block;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.recipient-form-field-label {
+  margin: 6px 0;
+}
+
+.recipient-form-field-label--space-between {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.recipient-checkbox {
+  flex-grow: 1;
+  font-size: 14px;
+  display: flex;
+  word-break: break-word;
+  align-items: flex-start;
+  max-width: inherit;
+  position: relative;
+  cursor: pointer;
+}
+
+.no-js .recipient-checkbox {
+  display: none;
+}
+
+.recipient-form > input[type='checkbox'] {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: var(--recipient-checkbox-margin-top) 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+}
+
+.recipient-fields__field {
+  margin: 0 0 20px 0;
+}
+
+.recipient-fields .field__label {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 35px);
+  overflow: hidden;
+}
+
+.recipient-checkbox > svg {
+  margin-top: 3px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.recipient-form .icon-checkmark {
+  visibility: hidden;
+  position: absolute;
+  left: 2.8px;
+  z-index: 5;
+  top: 4px;
+}
+
+.recipient-form > input[type='checkbox']:checked + label .icon-checkmark {
+  visibility: visible;
+}
+
+.js .recipient-fields {
+  display: none;
+}
+
+.recipient-fields hr {
+  margin: 16px auto;
+  max-width: none;
+}
+
+.recipient-form > input[type='checkbox']:checked ~ .recipient-fields {
+  display: block;
+  animation: animateMenuOpen var(--duration-default) ease;
+}
+.recipient-form > input[type='checkbox']:not(:checked, :disabled) ~ .recipient-fields,
+.recipient-email-label {
+  display: none;
+}
+
+.js .recipient-email-label.required,
+.no-js .recipient-email-label.optional {
+  display: inline;
+  font-size: 14px;
+  margin: 0;
+}
+
+.recipient-form ul {
+  line-height: calc(1 + 0.6 / var(--font-body-scale));
+  padding-left: 44px;
+  text-align: left;
+}
+
+.recipient-form ul a {
+  display: inline;
+}
+
+.recipient-form .error-message::first-letter {
+  text-transform: capitalize;
+}
+
+@media screen and (forced-colors: active) {
+  .recipient-fields > hr {
+    border-top: 1px solid rgb(var(--color-background));
+  }
+
+  .recipient-checkbox > svg {
+    background-color: inherit;
+    border: 1px solid rgb(var(--color-background));
+  }
+
+  .recipient-form > input[type='checkbox']:checked + label .icon-checkmark {
+    border: none;
+  }
+}
+</style>

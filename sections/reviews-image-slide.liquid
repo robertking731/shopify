@@ -1,0 +1,571 @@
+{% schema %}
+    {
+   "name": "Review image slide",
+   "settings": [
+     {
+       "type": "text",
+       "id": "carousel_title",
+       "label": "Carousel Title",
+       "default": "Our Featured Collection"
+     }
+   ],
+   "blocks": [
+     {
+       "type": "slid_1",
+       "name": "Slide #1",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "slide_1_image",
+           "label": "Slide Image",
+           "info": "Upload an image for this slide."
+         },
+         {
+           "type": "url",
+           "id": "slide_1_image_url",
+           "label": "Image URL"
+         }
+       ]
+     },
+     {
+       "type": "slid_2",
+       "name": "Slide #2",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "slide_2_image",
+           "label": "Slide Image",
+           "info": "Upload an image for this slide."
+         },
+         {
+           "type": "url",
+           "id": "slide_2_image_url",
+           "label": "Image URL"
+         }
+       ]
+     }
+   ],
+   "max_blocks": 41,
+   "presets": [
+     {
+       "name": "Review image slide",
+       "category": "Image Slides"
+     }
+   ]
+ }
+ {% endschema %}
+  
+{% if section.blocks.size > 0 %}
+    <div class="image-slide" style="padding-top: 100px; padding-bottom: 60px;">
+      <div class="layout">
+        <div class="two-column-slide">
+            
+          <div class="slider-container slider-container-1">
+              <div class="slider">
+                {% for block in section.blocks %}
+                  {% if block.type == 'slid_1' %}
+                  <div class="slide">
+                    <div class="slide-box">
+                      <div class="video-box">
+                        {% if block.settings.slide_1_image %}
+                        <img loading="lazy" src="{{ block.settings.slide_1_image | img_url : 'large' }}" width="100" height="100" alt="">
+                        {% endif %}
+                        {% if block.settings.slide_1_image_url %}
+                        <img loading="lazy" src="{{ block.settings.slide_1_image_url | img_url : 'large' }}" width="100" height="100" alt="">
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <ol class="dots_navigation">
+                <!-- Add more dots_navigation corresponding to each slide -->
+              </ol>
+              <div class="slider-controls">
+              </div>
+            </div>
+
+          <div class="slider-container slider-container-2">
+              <div class="slider">
+                {% for block in section.blocks %}
+                  {% if block.type == 'slid_2' %}
+                  <div class="slide">
+                    <div class="slide-box">
+                      <div class="video-box">
+                        {% if block.settings.slide_2_image %}
+                        <img loading="lazy" src="{{ block.settings.slide_2_image | img_url : 'large' }}" width="100" height="100" alt="">
+                        {% endif %}
+                        {% if block.settings.slide_2_image_url %}
+                        <img loading="lazy" src="{{ block.settings.slide_2_image_url | img_url : 'large' }}" width="100" height="100" alt="">
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <ol class="dots_navigation">
+                <!-- Add more dots_navigation corresponding to each slide -->
+              </ol>
+              <div class="slider-controls">
+              </div>
+            </div>
+        
+          
+        </div>
+      </div>
+    </div>
+{% endif %}
+     
+     <style>
+       .image-slide {
+         width: 100%;
+       }
+     
+       .image-slide .layout {
+           max-width: 1380px;
+           margin: auto;
+           padding: 0;
+         }
+
+         .image-slide .two-column-slide {
+            display: flex;
+           justify-content: space-between;
+         }
+     
+         .image-slide .slider-container {
+           position: relative;
+           overflow: hidden;
+           width: 48%;
+           margin: auto;
+         }
+     
+         .image-slide .slider-container .slider {
+           width: 100%;
+           display: flex;
+           transition: transform 0.5s ease;
+           overflow-x: unset;
+           overflow-y: unset;
+         }
+     
+         .image-slide .slider-container .slide {
+           /* flex: 0 0 100%; */
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           position: relative;
+         }
+     
+         .image-slide .slider-container .slide a {
+           width: 100%;
+         }
+     
+         .image-slide .slider-container .slide img {
+           width: 100%;
+           height: 100%;
+           max-width: 100%;
+           max-height: 100%;
+           transition: transform 0.5s ease;
+           cursor: pointer;
+           /* Add cursor pointer to indicate clickable */
+           transition: transform 0.3s ease;
+         }
+     
+         .image-slide .slider-container .dots_navigation {
+           text-align: center;
+           margin-top: 10px;
+           padding: 0px;
+     
+         }
+     
+         .image-slide .slider-container .Dots {
+           display: inline-block;
+           margin: 0 5px;
+           cursor: pointer;
+           width: 12px;
+           height: 12px;
+           background-color: #999393;
+           border-radius: 50%;
+         }
+     
+         .image-slide .slider-container .dot-selected {
+           background-color: #eaa794;
+         }
+     
+         .image-slide .slider-container .slider-controls {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+           width: 100%;
+           display: flex;
+           justify-content: space-between;
+           margin-top: -38px;
+         }
+     
+         .image-slide .slider-container .control-button {
+           cursor: pointer;
+           padding: 10px;
+           background-color: transparent;
+           color: #fff;
+           border: none;
+           border-radius: 5px;
+           font-size: 35px;
+           margin: 0 10px;
+           transition: all 0.3s ease;
+           color: rgb(153, 147, 147);
+           font-weight: 100;
+         }
+     
+         /* .control-button:hover {
+         background-color: rgba(0, 0, 0, 0.7);
+       } */
+         .image-slide .slider-container .control-button:hover {
+           color: #eaa794;
+         }
+     
+         .image-slide .slider-container .slide-box {
+           width: 100%;
+           padding: 0;
+         }
+
+       @media (max-width: 768px) {
+          .image-slide .two-column-slide {
+            display: flex;
+           justify-content: space-between;
+            flex-direction: column;
+         }
+     
+         .image-slide .slider-container {
+           width: 100%;
+         }
+          
+        }
+     
+         /* Responsive slides */
+         @media (max-width: 599px) {
+     
+           /* Mobile styles */
+           .image-slide .slider-container .slide {
+             width: 100%;
+             /* Show one full slide */
+             flex: 0 0 100%;
+           }
+         }
+     
+         @media (min-width: 600px) and (max-width: 899px) {
+     
+           /* Tablet styles */
+           .image-slide .slider-container .slide {
+             width: 100%;
+             /* Show half of a slide */
+             flex: 0 0 100%;
+           }
+         }
+     
+         @media (min-width: 900px) {
+     
+           /* Desktop styles */
+           .image-slide .slider-container .slide {
+             width: 100%;
+             /* Show one third of a slide */
+             flex: 0 0 100%;
+           }
+         }
+     
+     </style>
+     
+     
+     <script>
+
+        function slideContainer_1() {
+            function getSlidesToShow() {
+             // Determine how many slides to show based on window width
+             if (window.innerWidth < 600) {
+               return 1; // Mobile
+             } else if (window.innerWidth >= 600 && window.innerWidth < 900) {
+               return 1; // Tablet
+             } else {
+               return 1; // Desktop
+             }
+           }
+     
+           const slider = document.querySelector(".image-slide .slider-container-1 .slider");
+           const slides = document.querySelectorAll(".image-slide .slider-container-1 .slide");
+           let dotCount = Math.ceil(slides.length / getSlidesToShow());
+           let html = "";
+           let html_1 = "";
+           
+           for (let i = 0; i < dotCount; i++) {
+             html += '<li class="slider-container-1-Dots Dots" data-index="' + i + '"></li>';
+           }
+     
+           html_1 = '<button class="control-button" id="slider-container-1_prevBtn_1">&#10094;</button><button class="control-button" id="slider-container-1_nextBtn_1">&#10095;</button>'
+           document.querySelector(".image-slide .slider-container-1 .slider-controls").innerHTML = html_1;
+           document.querySelector(".image-slide .slider-container-1 .dots_navigation").innerHTML = html;
+           html = '';
+     
+           let dots_navigation = document.querySelectorAll(".image-slide .slider-container-1-Dots");
+           let currentIndex = 0;
+           let startX;
+           let cnt;
+           let dotIndex = 1;
+     
+           function showSlide(ct, moveType) {
+             // Update the slider translation based on slide width and current index
+             let index = ct;
+             const slideWidth = slider.clientWidth / getSlidesToShow();
+             let maxSlideWidth = slides.length * slideWidth;
+             if (maxSlideWidth - (slideWidth * getSlidesToShow()) < index * slideWidth) {
+               if (moveType == "dot") {
+                 slider.style.transform = `translateX(-${(index - (slides.length % getSlidesToShow()) + 1) * slideWidth}px)`;
+                 resetDotColors(ct, "dot");
+                 return;
+               }
+               slider.style.transform = `translateX(-${0 * slideWidth}px)`;
+               resetDotColors(ct, "");
+               return;
+             }
+             console.log("dd", ct)
+             slider.style.transform = `translateX(-${index * slideWidth}px)`;
+             resetDotColors(ct, "");
+           }
+     
+     
+           function resetDotColors(ct, dt) {
+             dots_navigation.forEach(dot => {
+               dot.style.backgroundColor = "#999393";
+             });
+     
+             if (dt == "dot") {
+               dots_navigation[ct/getSlidesToShow()].style.backgroundColor = "#eaa794";
+               return;
+             }
+     
+             if (dt == "ed") {
+               dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+               return;
+             }
+             if (ct == 0) {
+               dots_navigation[0].style.backgroundColor = "#eaa794";
+             } else {
+               if (ct % getSlidesToShow() == 0) {
+                 dots_navigation[ct / getSlidesToShow()].style.backgroundColor = "#eaa794";
+                 return;
+               }
+               if ((dotCount - 1) * getSlidesToShow() - 1 == ct) {
+                 console.log(ct, dotCount)
+                 dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+                 return;
+               }
+               dots_navigation[Math.ceil(ct / getSlidesToShow()) - 1].style.backgroundColor = "#eaa794";
+             }
+           }
+     
+           function prevSlide() {
+             currentIndex = currentIndex - 1;
+             if (currentIndex < 0) {
+               currentIndex = slides.length - getSlidesToShow();
+             }
+             showSlide(currentIndex, "");
+           }
+     
+           function nextSlide() {
+             currentIndex = currentIndex + 1;
+             if (currentIndex > slides.length - getSlidesToShow()) {
+               currentIndex = 0;
+             }
+             showSlide(currentIndex, "");
+           }
+     
+           dots_navigation.forEach((dot, index) => {
+             dot.addEventListener("click", () => {
+               showSlide(getSlidesToShow() * index, "dot");
+             });
+           });
+     
+           document.getElementById("slider-container-1_prevBtn_1").addEventListener("click", function() {
+             prevSlide();
+           });
+     
+           document.getElementById("slider-container-1_nextBtn_1").addEventListener("click", function() {
+             nextSlide();
+           });
+     
+           // Swipe Gesture
+           document.querySelector(".image-slide .slider-container-1").addEventListener("touchstart", touchStart);
+           document.querySelector(".image-slide .slider-container-1").addEventListener("touchmove", touchMove);
+     
+           function touchStart(e) {
+             startX = e.touches[0].clientX;
+           }
+     
+           function touchMove(e) {
+             if (!startX) return;
+     
+             let endX = e.touches[0].clientX;
+             let diffX = startX - endX;
+     
+             if (diffX > 0) {
+               // Swiped left
+               nextSlide();
+             } else {
+               // Swiped right
+               prevSlide();
+             }
+     
+             startX = null;
+           }
+     
+           // Show the first slide initially
+           showSlide(currentIndex, "");
+        }
+
+        function slideContainer_2() {
+            function getSlidesToShow() {
+             // Determine how many slides to show based on window width
+             if (window.innerWidth < 600) {
+               return 1; // Mobile
+             } else if (window.innerWidth >= 600 && window.innerWidth < 900) {
+               return 1; // Tablet
+             } else {
+               return 1; // Desktop
+             }
+           }
+     
+           const slider = document.querySelector(".image-slide .slider-container-2 .slider");
+           const slides = document.querySelectorAll(".image-slide .slider-container-2 .slide");
+           let dotCount = Math.ceil(slides.length / getSlidesToShow());
+           let html = "";
+           let html_1 = "";
+           
+           for (let i = 0; i < dotCount; i++) {
+             html += '<li class="slider-container-2-Dots Dots" data-index="' + i + '"></li>';
+           }
+     
+           html_1 = '<button class="control-button" id="slider-container-2_prevBtn_1">&#10094;</button><button class="control-button" id="slider-container-2_nextBtn_1">&#10095;</button>'
+           document.querySelector(".image-slide .slider-container-2 .slider-controls").innerHTML = html_1;
+           document.querySelector(".image-slide .slider-container-2 .dots_navigation").innerHTML = html;
+           html = '';
+     
+           let dots_navigation = document.querySelectorAll(".image-slide .slider-container-2 .slider-container-2-Dots");
+           let currentIndex = 0;
+           let startX;
+           let cnt;
+           let dotIndex = 1;
+     
+           function showSlide(ct, moveType) {
+             // Update the slider translation based on slide width and current index
+             let index = ct;
+             const slideWidth = slider.clientWidth / getSlidesToShow();
+             let maxSlideWidth = slides.length * slideWidth;
+             if (maxSlideWidth - (slideWidth * getSlidesToShow()) < index * slideWidth) {
+               if (moveType == "dot") {
+                 slider.style.transform = `translateX(-${(index - (slides.length % getSlidesToShow()) + 1) * slideWidth}px)`;
+                 resetDotColors(ct, "dot");
+                 return;
+               }
+               slider.style.transform = `translateX(-${0 * slideWidth}px)`;
+               resetDotColors(ct, "");
+               return;
+             }
+             console.log("dd", ct)
+             slider.style.transform = `translateX(-${index * slideWidth}px)`;
+             resetDotColors(ct, "");
+           }
+     
+     
+           function resetDotColors(ct, dt) {
+             dots_navigation.forEach(dot => {
+               dot.style.backgroundColor = "#999393";
+             });
+     
+             if (dt == "dot") {
+               dots_navigation[ct/getSlidesToShow()].style.backgroundColor = "#eaa794";
+               return;
+             }
+     
+             if (dt == "ed") {
+               dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+               return;
+             }
+             if (ct == 0) {
+               dots_navigation[0].style.backgroundColor = "#eaa794";
+             } else {
+               if (ct % getSlidesToShow() == 0) {
+                 dots_navigation[ct / getSlidesToShow()].style.backgroundColor = "#eaa794";
+                 return;
+               }
+               if ((dotCount - 1) * getSlidesToShow() - 1 == ct) {
+                 console.log(ct, dotCount)
+                 dots_navigation[dotCount - 1].style.backgroundColor = "#eaa794";
+                 return;
+               }
+               dots_navigation[Math.ceil(ct / getSlidesToShow()) - 1].style.backgroundColor = "#eaa794";
+             }
+           }
+     
+           function prevSlide() {
+             currentIndex = currentIndex - 1;
+             if (currentIndex < 0) {
+               currentIndex = slides.length - getSlidesToShow();
+             }
+             showSlide(currentIndex, "");
+           }
+     
+           function nextSlide() {
+             currentIndex = currentIndex + 1;
+             if (currentIndex > slides.length - getSlidesToShow()) {
+               currentIndex = 0;
+             }
+             showSlide(currentIndex, "");
+           }
+     
+           dots_navigation.forEach((dot, index) => {
+             dot.addEventListener("click", () => {
+               showSlide(getSlidesToShow() * index, "dot");
+             });
+           });
+     
+           document.getElementById("slider-container-2_prevBtn_1").addEventListener("click", function() {
+             prevSlide();
+           });
+     
+           document.getElementById("slider-container-2_nextBtn_1").addEventListener("click", function() {
+             nextSlide();
+           });
+     
+           // Swipe Gesture
+           document.querySelector(".image-slide .slider-container-2").addEventListener("touchstart", touchStart);
+           document.querySelector(".image-slide .slider-container-2").addEventListener("touchmove", touchMove);
+     
+           function touchStart(e) {
+             startX = e.touches[0].clientX;
+           }
+     
+           function touchMove(e) {
+             if (!startX) return;
+     
+             let endX = e.touches[0].clientX;
+             let diffX = startX - endX;
+     
+             if (diffX > 0) {
+               // Swiped left
+               nextSlide();
+             } else {
+               // Swiped right
+               prevSlide();
+             }
+     
+             startX = null;
+           }
+     
+           // Show the first slide initially
+           showSlide(currentIndex, "");
+        }
+         document.addEventListener("DOMContentLoaded", function () {
+           slideContainer_1();
+           slideContainer_2();
+         });
+       </script>

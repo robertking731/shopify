@@ -1,0 +1,102 @@
+<div class="t4s-container">
+  <div class="t4s-container-inner">
+    <div class="t4s-code__liquid hdt-reveal--design-mode" hdt-reveal="slide-in">
+      <div id="row-2055894799">
+        <div id="col-1893986349" class="col medium-8 small-12 large-8" style="margin: auto">
+          <div class="col-inner text-center">
+            <div id="text-1667661911" class="text">
+              <h1 class="thin-font" style="font-size: 1.7em">
+                <span style="font-size: 0.8em; line-height: 1.2; font-weight: 300">
+                  Clinically studied ingredients, developed by naturopaths and doctors for general gut health and
+                  specific gut issues like
+                  <strong
+                    ><a
+                      href="_wp_link_placeholder"
+                      data-wplink-edit="true"
+                      >IBS, SIBO, Candida, leaky gut</a
+                    ></strong
+                  >.
+                </span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  #row-2055894799 {
+    padding-bottom: {{section.settings.padding}}px;
+  }
+  #text-1667661911 {
+    font-size: 0.8em;
+    line-height: 1.2;
+    text-align: center;
+  }
+  @media (min-width:550px) {
+    #text-1667661911 {
+      line-height: 1.2;
+    }
+  }
+    #col-1893986349 {
+       width: {{ section.settings.desktop_width }}%;
+        flex-basis: {{ section.settings.desktop_width }}%;
+    }
+       padding: 20px 10px 10px 10px;
+    }
+    @media (min-width:550px) {
+      #col-1893986349>.col-inner {
+        padding: 30px 0px 20px 0px;
+      }
+
+      #col-1893986349 {
+        width: {{ section.settings.mobile_width }}%;
+        flex-basis: {{ section.settings.mobile_width }}%;
+      }
+    }
+{% endstyle %}
+
+{% schema %}
+  {
+  "name": "Content Header",
+  "settings": [
+    {
+      "type": "range",
+      "id": "desktop_width",
+      "label": "Desktop Width (%)",
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "mobile_width",
+      "label": "Mobile Width (%)",
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "default": 100,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Header"
+    }
+  ]
+}
+{% endschema %}

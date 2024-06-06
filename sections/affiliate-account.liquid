@@ -1,0 +1,45 @@
+{% schema %}
+  {
+    "name": "Affiliate Account",
+    "settings": []
+  }
+{% endschema %}
+
+<div class="affiliate-registration affiliate-section ">
+    <div class="t4s-container">
+        <div class="col-inner">
+            <!-- no json scripts to comment in the content -->
+
+            <form id="leaddyno-affiliate-login-form" class="leaddyno-form" action="" method="POST">
+
+                <!-- Notices -->
+
+                <!-- Login -->
+                <div class="leaddyno-field-wrapper">
+                    <div class="leaddyno-field-label-wrapper">
+                        <label for="leaddyno-user-login">Username / Email *</label>
+                    </div>
+                    <input id="leaddyno-user-login" name="login" type="text" value="">
+                </div>
+                <!-- Password -->
+                <div class="leaddyno-field-wrapper">
+                    <div class="leaddyno-field-label-wrapper">
+                        <label for="leaddyno-user-password">Password *</label>
+                    </div>
+                    <input id="leaddyno-user-password" name="password" type="password" value="">
+                </div>
+                <!-- Action and nonce -->
+                <input type="hidden" name="leaddyno_action" value="login_affiliate">
+                <input type="hidden" id="leaddyno_token" name="leaddyno_token" value="a9c18e0650">
+                <!-- Redirect URL -->
+                <a name="redirect_url" value="/affiliate-account/"></a>
+                    <!-- Submit -->
+                    <a type="submit" class="leaddyno-button-primary button primary" value="Login">Login</a>
+                    <!-- Lost Password -->
+                    <div class="leaddyno-lost-password">
+                        <a href="/affiliate-reset-password/">Lost your password?</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

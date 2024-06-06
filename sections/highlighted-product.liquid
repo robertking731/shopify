@@ -1,0 +1,115 @@
+{% schema %}
+  {
+    "name": "Highlighted",
+    "settings": []
+  }
+{% endschema %}
+
+<div id="highlighted">
+    <div class="highlighted-container">
+        <div style="max-width: 1380px; display: flex; justify-content: center; align-items: center; margin: auto; padding-bottom: 40px;">
+            <div style="display: flex; margin: auto; max-width: 920px; flex-flow: row wrap; text-align: center; padding: 0 15px;">
+                <div class="inner-item empty">
+                </div>
+                <div class="inner-item">
+                    <div class="inner-icon">
+                        {%- render 'capsule-icon' -%}
+                    </div>
+                    <div class="inner-text">
+                        <h6>NEXT GEN CAPSULE TECHNOLOGY DESIGNED FOR THE GUT</h6>
+                    </div>
+                </div>
+                <div class="inner-item empty">
+                </div>
+                <div class="inner-item">
+                    <div class="inner-icon">
+                        {%- render 'molecule-icon' -%}
+                    </div>
+                    <div class="inner-text">
+                        <h6>CLINICALLY STUDIED INGREDIENTS</h6>
+                    </div>
+                </div>
+                <div class="inner-item">
+                    <div class="inner-icon">
+                        {%- render 'leaf-icon' -%}
+                    </div>
+                    <div class="inner-text">
+                        <h6>WITH NATURAL INGREDIENTS</h6>
+                    </div>
+                </div>
+                <div class="inner-item">
+                    <div class="inner-icon">
+                        {%- render 'stethoscope-icon' -%}
+                    </div>
+                    <div class="inner-text">
+                        <h6>FORMULATED BY DOCTORS & SCIENTISTS</h6>
+                    </div>
+                </div>
+                <div class="inner-item">
+                    <div class="inner-icon">
+                        {%- render 'ampoule-icon' -%}
+                    </div>
+                    <div class="inner-text">
+                        <h6>CLINICALLY STUDIED INGREDIENTS</h6>
+                    </div>
+                </div>
+                <div class="inner-item">
+                    <div class="inner-icon">
+                        {%- render 'badge-icon' -%}
+                    </div>
+                    <div class="inner-text">
+                        <h6>RECOMMENDED BY NATUROPATHS</h6>
+                    </div>
+                </div>
+                <div class="inner-item">
+                    <div class="inner-icon">
+                        {%- render 'enteric-coating-icon' -%}
+                    </div>
+                    <div class="inner-text">
+                        <h6>ACTIVE & STABILISED INGREDIENTS</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+.highlighted-container h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    color: #51534a;
+}
+
+    .highlighted-container .inner-item {
+        width: 50%;
+        padding-bottom: 20px;
+    }
+
+    .highlighted-container .inner-item .inner-icon {
+        padding-bottom: 15px;
+    }
+
+    .highlighted-container .inner-item .inner-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .highlighted-container .inner-item.empty {
+        width: 25%;
+    }
+
+    @media (min-width: 768px) {
+        .highlighted-container .inner-item {
+            width: 33.33%;
+        }
+
+        .highlighted-container .inner-item.empty {
+            width: 33.33%;
+        }
+    }
+
+</style>

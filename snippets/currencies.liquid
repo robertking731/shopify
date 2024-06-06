@@ -1,0 +1,169 @@
+{%- liquid 
+if settings.flag_currency
+ assign fl = 'flagst4s'
+endif
+assign sz = settings.size_currency
+assign cart_iso_code = cart.currency.iso_code
+ -%}
+{%- if settings.flag_currency %}
+<style>.flagst4s>img {margin-inline-end: 7px;border-radius: 2px;height: 15px;width: auto;}.flagst4s [data-current]{display: inline-block;}.flagst4s [data-img-current]{margin-inline-end: 3px; margin-bottom: 2px;}[data-flagst4s="sm"] img[data-img-current] {height: 12px;width: auto;}[data-flagst4s="md"] img {height: 18.5px;width: auto;margin-inline-end: 7px;}.flagst4s[data-flagst4s="md"] [data-img-current]{height: 15.5px;}</style>
+{% endif -%}
+{%- if shop.enabled_currencies.size > 1 and settings.currency_type == '1' -%}
+  {%- unless is_fixed -%}
+
+    {%- if linklists.currency-the4.links.size > 0 -%}
+      <div data-currency-wrap class="t4s-top-bar__currencies t4s-d-inline-block">
+        <button data-dropdown-open data-position="bottom-end" data-id="dropdown_currencies{{ sid }}">
+          <span data-flagst4s="{{ sz }}" class="t4s-d-inline-block {{ fl }}">
+            {%- if settings.flag_currency %}{{ localization.country | image_url: width: 30 | image_tag: loading: 'lazy', data-img-current: '' }}{% endif %}
+            <span data-current>{{- localization.country.currency.iso_code }}</span>
+          </span>
+          <svg class="t4s-ion-select-arrow" role="presentation" viewBox="0 0 19 12"><polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2" fill-rule="evenodd" stroke-width="2" stroke-linecap="square"></polyline></svg>
+        </button>
+        <div data-dropdown-wrapper class="t4s-dropdown__wrapper t4s-currency_type_{{ settings.currency_type }} t4s-current-scrollbar {{ class_mb }}" id="dropdown_currencies{{ sid }}">
+          <div class="t4s-drop-arrow"></div>
+          <div class="t4s-dropdown__list">
+          {%- assign list_curr = linklists.currency-the4.links | map: 'url' | join: ',' | remove: routes.root_url | remove: '#' | remove: ' ' | upcase | split: ',' | json -%}
+          {%- for country in localization.available_countries -%}
+            {%- unless list_curr contains country.currency.iso_code -%}{%- continue -%}{%- endunless -%}
+            <button type="button" data-flagst4s="{{ sz }}" data-currency-item data-dropdown-off class="t4s-currency-item {{ fl }}{% if country.iso_code == localization.country.iso_code %} is--selected{% endif %}" data-iso="{{ country.currency.iso_code }}" data-country="{{ country.iso_code }}">
+              {%- if settings.flag_currency %}{{ country | image_url: width: 30 | image_tag: loading: 'lazy' }}{% endif %}
+              <span>{{ country.name | capitalize }} - {{ country.currency.iso_code }} {{ country.currency.symbol }}</span>
+            </button>
+          {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- else -%}
+      <div data-currency-wrap class="t4s-dropdown t4s-top-bar__currencies t4s-d-inline-block">
+        <button data-dropdown-open data-position="bottom-end" data-id="dropdown_currencies{{ sid }}">
+          <span data-flagst4s="{{ sz }}" class="t4s-d-inline-block {{ fl }}">
+            {%- if settings.flag_currency %}{{ localization.country | image_url: width: 30 | image_tag: loading: 'lazy', data-img-current: '' }}{% endif %}
+            <span data-current>{{- localization.country.currency.iso_code }}</span>
+          </span>
+          <svg class="t4s-ion-select-arrow" role="presentation" viewBox="0 0 19 12"><polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2" fill-rule="evenodd" stroke-width="2" stroke-linecap="square"></polyline></svg>
+        </button>
+        <div data-dropdown-wrapper class="t4s-dropdown__wrapper t4s-currency_type_{{ settings.currency_type }} t4s-current-scrollbar {{ class_mb }}" id="dropdown_currencies{{ sid }}">
+          <div class="t4s-drop-arrow"></div>
+          <div class="t4s-dropdown__list">
+            {% for country in localization.available_countries %}
+              <button type="button" data-flagst4s="{{ sz }}" data-currency-item data-dropdown-off class="t4s-currency-item {{ fl }}{% if country.iso_code == localization.country.iso_code %} is--selected{% endif %}" data-iso="{{ country.currency.iso_code }}" data-country="{{ country.iso_code }}">
+                {%- if settings.flag_currency %}{{ country | image_url: width: 30 | image_tag: loading: 'lazy' }}{% endif %}
+                <span>{{ country.name | capitalize }} - {{ country.currency.iso_code }} {{ country.currency.symbol }}</span>
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+  {%- else -%}
+    
+    {{ 't4s-currency-lang_drawer.css' | asset_url | stylesheet_tag }}
+    <div data-currency-wrap data-currency-pos="{{ settings.currency_pos }}">
+      <button data-drawer-options='{ "id":"#drawer-currency-t4s-fixed" }' class="t4s-btn-currencies-sidebar">
+        <span data-flagst4s="{{ sz }}" class="t4s-d-inline-block {{ fl }}">
+          {%- if settings.flag_currency %}{{ localization.country | image_url: width: 30 | image_tag: loading: 'lazy', data-img-current: '' }}{% endif %}
+          <span data-current>{{- localization.country.currency.iso_code }}</span>
+        </span>
+        <svg class="t4s-ion-select-arrow " role="presentation" viewBox="0 0 19 12"><polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2" fill-rule="evenodd" stroke-width="2" stroke-linecap="square"></polyline></svg>
+      </button>
+      <div id="drawer-currency-t4s-fixed" class="t4s-drawer t4s-drawer__right" aria-hidden="true">
+        <div class="t4s-drawer__header">
+          <span>{{ 'general.sidebar.currency' | t }}</span>
+          <button class="t4s-drawer__close" data-drawer-close aria-label="{{ 'general.sidebar.close' | t }}"><svg class="t4s-iconsvg-close" role="presentation" viewBox="0 0 16 14"><path d="M15 0L1 14m14 0L1 0" stroke="currentColor" fill="none" fill-rule="evenodd"></path></svg></button>
+        </div>
+        <div class="t4s-drawer__content">
+          <div class="t4s-drawer__main t4s-current-scrollbar">
+            {% for country in localization.available_countries %}
+              <button type="button" data-flagst4s="{{ sz }}" data-drawer-close data-currency-item class="t4s-currency-item {{ fl }}{% if country.iso_code == localization.country.iso_code %} is--selected{% endif %}" data-iso="{{ country.currency.iso_code }}" data-country="{{ country.iso_code }}">
+                {%- if settings.flag_currency %}{{ country | image_url: width: 30 | image_tag: loading: 'lazy' }}{% endif %}
+                <span>{{ country.name | capitalize }} - {{ country.currency.iso_code }} {{ country.currency.symbol }}</span>
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {%- endunless -%}
+
+{%- elsif settings.currency_type == '2' -%}
+  {% comment %} {%- if settings.flag_currency %}{{ 'currencies.min.css' | asset_url | stylesheet_tag }}{% endif -%} {% endcomment %}
+  {%- assign supported_codes = settings.supported_currencies | split: '|' -%}
+
+  {%- # theme-check-disable RemoteAsset -%}
+  {%- unless is_fixed -%}
+
+    <div data-currency-wrap class="t4s-top-bar__currencies t4s-d-inline-block">
+      <button data-dropdown-open data-position="bottom-end" data-id="dropdown_currencies{{ sid }}">
+        <span data-flagst4s="{{ sz }}" class="t4s-d-inline-block {{ fl }}">
+          {%- if settings.flag_currency %}
+            <img data-img-current width="30" height="22.5" src="//cdn.shopify.com/static/images/flags/{{ cart_iso_code | slice: 0, 2 | join: '' | downcase }}.svg" alt="{{ cart_iso_code }}" loading="lazy">
+          {% endif %}
+          <span data-current>{{ cart_iso_code }}</span>
+        </span>
+        <svg class="t4s-ion-select-arrow" role="presentation" viewBox="0 0 19 12"><polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2" fill-rule="evenodd" stroke-width="2" stroke-linecap="square"></polyline></svg>
+      </button>
+      <div data-dropdown-wrapper class="t4s-dropdown__wrapper t4s-currency_type_{{ settings.currency_type }} t4s-current-scrollbar {{ class_mb }}" id="dropdown_currencies{{ sid }}">
+        <div class="t4s-drop-arrow"></div>
+        <div class="t4s-dropdown__list">
+          <button type="button" data-flagst4s="{{ sz }}" data-currency-item data-dropdown-off class="t4s-currency-item {{ fl }} lazyloadt4s t4s-d-none" data-currency-temp>
+            {%- if settings.flag_currency %}<img width="30" height="22.5" src="//cdn.shopify.com/static/images/flags/{{ cart_iso_code | slice: 0, 2 | downcase }}.svg" alt="{{ cart_iso_code }}" loading="lazy">{% endif %}
+            <span>{{ cart_iso_code }}</span>
+          </button>
+          {%- for code in supported_codes -%}
+          {%- assign array_money = code | split: '-' -%}
+          {%- assign data_currency = array_money | first | upcase | strip | remove: ' ' -%}
+          {%- assign name_money = array_money | last | strip -%}
+          <button type="button" data-flagst4s="{{ sz }}" data-currency-item data-dropdown-off class="t4s-currency-item {{ fl }} lazyloadt4s flagst4s-{{ data_currency }}{% if data_currency == cart_iso_code %} is--selected{% endif %}" data-currency="{{ data_currency }}">
+            {%- if settings.flag_currency %}<img width="30" height="22.5" src="//cdn.shopify.com/static/images/flags/{{ name_money | slice: 0, 2 | downcase }}.svg" alt="{{ name_money }}" loading="lazy">{% endif %}
+            <span>{{ name_money }}</span>
+          </button>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+  {%- else -%}
+  
+    {{ 't4s-currency-lang_drawer.css' | asset_url | stylesheet_tag }}
+    <div data-currency-wrap data-currency-pos="{{ settings.currency_pos }}">
+      <button data-drawer-options='{ "id":"#drawer-currency-t4s-fixed" }' class="t4s-btn-currencies-sidebar">
+        <span data-flagst4s="{{ sz }}" class="t4s-d-inline-flex t4s-align-items-center {{ fl }}">
+          {%- if settings.flag_currency %}
+            <img data-img-current width="30" height="22.5" src="//cdn.shopify.com/static/images/flags/{{ cart_iso_code | slice: 0, 2 | join: '' | downcase }}.svg" alt="{{ cart_iso_code }}" loading="lazy">
+          {% endif %}
+          <span data-current>{{ cart_iso_code }}</span>
+        </span>
+        <svg class="t4s-ion-select-arrow " role="presentation" viewBox="0 0 19 12"><polyline fill="none" stroke="currentColor" points="17 2 9.5 10 2 2" fill-rule="evenodd" stroke-width="2" stroke-linecap="square"></polyline></svg>
+      </button>
+      <div id="drawer-currency-t4s-fixed" class="t4s-drawer t4s-drawer__right" aria-hidden="true">
+        <div class="t4s-drawer__header">
+          <span>{{ 'general.sidebar.currency' | t }}</span>
+          <button class="t4s-drawer__close" data-drawer-close aria-label="{{ 'general.sidebar.close' | t }}"><svg class="t4s-iconsvg-close" role="presentation" viewBox="0 0 16 14"><path d="M15 0L1 14m14 0L1 0" stroke="currentColor" fill="none" fill-rule="evenodd"></path></svg></button>
+        </div>
+        <div class="t4s-drawer__content">
+          <div class="t4s-drawer__main t4s-current-scrollbar">
+            <button type="button" data-flagst4s="{{ sz }}" data-drawer-close data-currency-item class="t4s-currency-item {{ fl }} t4s-d-none" data-currency-temp>
+              {%- if settings.flag_currency %}<img width="30" height="22.5" src="//cdn.shopify.com/static/images/flags/{{ cart_iso_code | slice: 0, 2 | downcase }}.svg" alt="{{ cart_iso_code }}" loading="lazy">{% endif %}
+              <span>{{ cart_iso_code }}</span>
+            </button>
+            {%- for code in supported_codes -%}
+            {%- assign array_money = code | split: '-' -%}
+            {%- assign data_currency = array_money | first | upcase | strip | remove: ' ' -%}
+            {%- assign name_money = array_money | last | strip -%}
+            <button type="button" data-flagst4s="{{ sz }}" data-drawer-close data-currency-item class="t4s-currency-item {{ fl }} flagst4s-{{ data_currency }}{% if data_currency == cart_iso_code %} is--selected{% endif %}" data-currency="{{ data_currency }}">
+              {%- if settings.flag_currency %}<img width="30" height="22.5" src="//cdn.shopify.com/static/images/flags/{{ name_money | slice: 0, 2 | downcase }}.svg" alt="{{ name_money }}" loading="lazy">{% endif %}
+              <span>{{ name_money }}</span>
+            </button>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {%- endunless -%}
+  {%- # theme-check-enable RemoteAsset -%}
+
+{%- endif -%}

@@ -1,0 +1,268 @@
+{% schema %}
+{
+  "name": "Custom Mobile Categories",
+  "class": "mobile-container",
+  "max_blocks": 30,
+  "blocks": [
+  ]
+}
+{% endschema %}
+
+{%- liquid
+  assign basics = linklists['learn-basics']
+  assign causes = linklists['header-learn-causes']
+  assign effects = linklists['header-learn-effects']
+  assign gut_health = linklists['header-learn-gut-health']
+  assign more = linklists['header-learn-more']
+
+  assign treatment = linklists['header-treatment']
+  assign treatment_recovery = linklists['header-treatment-recovery']
+  assign sibo_diets = linklists['header-treatment-sibo-diets']
+
+  assign about = linklists['header-about']
+-%}
+
+<!-- Begin Menu Accordion -->
+<div class="accordion-container">
+  <div class="no-accordion"><a href="/">Shop</a></div>
+  <div class="mobile-accordion">
+    <a href="#"
+      ><span>Learn</span><span class="drop-arrow">{% render 'drop-arrow-icon' %}</span></a
+    >
+  </div>
+  <div class="accordion-content">
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">BASICS</a></div>
+    <ul>
+      {%- for link in basics.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">CAUSES</a></div>
+    <ul>
+      {%- for link in causes.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">EFFECTS</a></div>
+    <ul>
+      {%- for link in effects.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">GUT HEALTH</a></div>
+    <ul>
+      {%- for link in gut_health.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">MORE</a></div>
+    <ul>
+      {%- for link in more.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  <div class="mobile-accordion">
+    <a href="#"
+      ><span>Treatment</span> <span class="drop-arrow">{% render 'drop-arrow-icon' %}</span></a
+    >
+  </div>
+  <div class="accordion-content">
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">treatment </a></div>
+    <ul>
+      {%- for link in treatment.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">RECOVERY</a></div>
+    <ul>
+      {%- for link in treatment_recovery.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div style="padding-left: 8px;"><a href="#" style="text-transform: uppercase;">SIBO DIETS</a></div>
+    <ul>
+      {%- for link in sibo_diets.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="no-accordion"><a href="/faqs/">FAQs</a></div>
+  <div class="mobile-accordion">
+    <a href="#">
+      <span>About</span><span class="drop-arrow">{% render 'drop-arrow-icon' %}</span></a
+    >
+  </div>
+  <div class="accordion-content">
+    <ul>
+      {%- for link in about.links -%}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="no-accordion"><a href="/blog/">Blog</a></div>
+  <div class="no-accordion"><a href="/my-account/">Login</a></div>
+</div>
+<!-- End Menu Accordion -->
+
+<style>
+  .accordion-container {
+      width: 100%;
+      max-width: 100%;
+  }
+
+  .mobile-accordion {
+      cursor: pointer;
+      height: 50px;
+      border-top: 1px solid #ececec;
+    padding-left: 20px;
+
+  }
+
+  .no-accordion a:hover {
+    color: #111;
+  }
+
+  .mobile-accordion a {
+      width: 100%;
+      height: 100%;
+      line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mobile-accordion:hover {
+      background-color: rgba(0, 0, 0, .05);
+  }
+
+  .accordion-content {
+      background-color: white;
+      border-left: 1px solid whitesmoke;
+      border-right: 1px solid whitesmoke;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-in-out;
+      background-color: rgba(0, 0, 0, .05);
+  }
+
+  .accordion-content > div {
+    padding-left: 8px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700;
+  }
+
+  .accordion-content > div > a {
+    text-transform: uppercase;
+    color: #000;
+    font-size: 0.8em;
+  }
+
+  .accordion-content ul li {
+    line-height: 25.6px;
+    padding: 7px 0px 7px 5px;
+  }
+
+  .accordion-content ul li a {
+    font-weight: 400;
+    color: rgb(102, 102, 102);
+    font-size: 1em;
+  }
+
+  .accordion-content ul li a:hover {
+  color: #111;
+    }
+
+  .no-accordion {
+      cursor: pointer;
+      height: 50px;
+      border-top: 1px solid #ececec;
+    padding-left: 20px;
+  }
+
+  .no-accordion a {
+      width: 100%;
+      height: 100%;
+    line-height: 50px;
+  }
+
+  .no-accordion:hover {
+      background-color: rgba(0, 0, 0, .05);
+  }
+
+  .is-open {
+      background-color: rgba(0, 0, 0, .05);
+  }
+  .mobile-accordion > a > .drop-arrow {
+    padding-right: 20px;
+    padding-top: 5px;
+  }
+
+  .mobile-accordion  > a > .drop-arrow > svg {
+    width: 20px;
+    height: 20px;
+    fill: hsla(0, 0%, 40%, .85);
+    transition: all 0.2s;
+  }
+
+  .mobile-accordion.is-open svg {
+    transform: rotate(180deg);
+    transition: all 0.2s;
+  }
+
+  @keyframes slide-down {
+      0% {
+          opacity: 0;
+          transform: translateY(-10px);
+      }
+
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+</style>
+
+{%- javascript -%}
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionBtns = document.querySelectorAll(".mobile-accordion");
+
+      accordionBtns.forEach((accordion) => {
+          accordion.onclick = function () {
+              this.classList.toggle("is-open");
+
+              let content = this.nextElementSibling;
+
+              if (content.style.maxHeight) {
+                  // If the accordion is open, close it
+                  content.style.maxHeight = null;
+              } else {
+                  // If the accordion is currently closed, open it
+                  content.style.maxHeight = content.scrollHeight + "px";
+              }
+          };
+      });
+  });
+{%- endjavascript -%}

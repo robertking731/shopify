@@ -1,0 +1,67 @@
+{% schema %}
+    {
+      "name": "Predictive search",
+      "settings": []
+    }
+  {% endschema %}
+  {%- if predictive_search.performed -%}
+  <div id="predictive-search-results">
+      {%- if predictive_search.resources.products.size > 0 -%}
+      {%- for product in predictive_search.resources.products -%}
+      <a href="{{ product.url }}">
+          <div class="autocomplete-suggestion" data-index="0">
+            {%- assign image = product.featured_media | default: placeholder_img -%}
+            {%- if image != blank -%}
+            <div class="inner-img">
+                  <img loading="lazy" class="lazyloadt4s" data-src="{{ image | image_url: width: 1 }}" data-widths="[100,200,400,600,700]"
+                      data-optimumx="2" data-sizes="auto"
+                      src="{{ image | image_url: "small" }}"
+                      width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}">
+            </div>
+            {%- endif -%}
+            <div class="product-info">
+              {% capture title_html %}
+                <strong>{{ predictive_search.terms }}</strong>
+              {% endcapture %}
+              {% assign formattedTitle = product.title | replace: predictive_search.terms, title_html %}
+                <div class="search-name">{{ formattedTitle }}</div>
+                <div class="search-price">
+                    <span>
+                        {%- render 'product-price',class_price: 't4s-widget__pr-price',product:
+                        product,price_varies_style:price_varies_style, type: 'card',isGrouped:false -%}
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+          </div>
+      </a>
+      {%- endfor -%}
+      {%- endif -%}
+    {%- if predictive_search.resources.pages.size > 0 -%}
+      {%- for product in predictive_search.resources.pages -%}
+      <a href="{{ product.url }}">
+          <div class="autocomplete-suggestion" data-index="0">
+            {%- assign image = product.featured_media | default: placeholder_img -%}
+            {%- if image != blank -%}
+            <div class="inner-img">
+                  <img loading="lazy" class="lazyloadt4s" data-src="{{ image | image_url: width: 1 }}" data-widths="[100,200,400,600,700]"
+                      data-optimumx="2" data-sizes="auto"
+                      src="{{ image | image_url: "small" }}"
+                      width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}">
+            </div>
+            {%- endif -%}
+            <div class="product-info" style="{%- if image == blank -%} padding: 10px 0 {%- endif -%}">
+              {% capture title_html_1 %}
+                <strong>{{ predictive_search.terms }}</strong>
+              {% endcapture %}
+              {% assign formattedTitle1 = product.title | replace_first: predictive_search.terms, title_html_1 %}
+                <div class="search-name" style="width: 100%">{{ formattedTitle1 }}</div>
+            </div>
+          </div>
+      </a>
+      {%- endfor -%}
+      {%- endif -%}
+  </div>
+  {%- endif -%}
+  

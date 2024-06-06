@@ -1,0 +1,75 @@
+@media (max-width: 767px) {
+  .t4s-row-cols-1.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-1.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 70.71%;
+  }
+
+  .t4s-row-cols-2.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-2.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 48.49%;
+  }
+
+  /*   .t4s-row-cols-3.is-carousel-center > .t4s-col-item,.t4s-row-cols-3.is-carousel-center .flickityt4s-slider> .t4s-col-item {
+    width: 25.26%;
+  }
+
+  .t4s-row-cols-4.is-carousel-center > .t4s-col-item,.t4s-row-cols-4.is-carousel-center .flickityt4s-slider> .t4s-col-item {
+    width: 20.21%;
+  }
+
+  .t4s-row-cols-5.is-carousel-center > .t4s-col-item,.t4s-row-cols-5.is-carousel-center .flickityt4s-slider> .t4s-col-item {
+    width: 16.8266667%;
+  } */
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .t4s-row-cols-md-1.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-md-1.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 50.51%;
+  }
+
+  .t4s-row-cols-md-2.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-md-2.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 33.67%;
+  }
+
+  .t4s-row-cols-md-3.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-md-3.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 25.26%;
+  }
+
+  .t4s-row-cols-md-4.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-md-4.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 20.21%;
+  }
+
+  .t4s-row-cols-md-5.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-md-5.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 16.8266667%;
+  }
+}
+@media (min-width: 1025px) {
+  .t4s-row-cols-lg-1.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-lg-1.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 50.51%;
+  }
+
+  .t4s-row-cols-lg-2.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-lg-2.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 33.67%;
+  }
+
+  .t4s-row-cols-lg-3.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-lg-3.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 25.26%;
+  }
+
+  .t4s-row-cols-lg-4.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-lg-4.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 20.21%;
+  }
+
+  .t4s-row-cols-lg-5.is-carousel-center > .t4s-col-item,
+  .t4s-row-cols-lg-5.is-carousel-center .flickityt4s-slider > .t4s-col-item {
+    width: 16.8266667%;
+  }
+}

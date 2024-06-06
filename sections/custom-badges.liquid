@@ -1,0 +1,74 @@
+{% schema %}
+  {
+    "name": "Custom badges",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "badge",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Badge",
+            "id": "badge"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom badges"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+<div class="section-bolck">
+    <div class="t4s-container" style="padding: 50px 0;">
+        <div class="t4s-container-inner ">
+            <div class="row row-collapse align-center" style="margin: auto; max-width: 920px;">
+                <div class="d-flex pb-30" style="display: flex; justify-content: space-between; text-align: center; padding: 0 15px; width: 100%;">
+                    <div class="col-4">
+                        <div class="inner-image" style="width: 30%; margin: auto;" >
+                            {%- render 'gluten-icon' -%}
+                        </div>
+                        <div class="inner-text m-auto" style="width: 90%">
+                            Gluten free
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="inner-image" style="width: 30%; margin: auto;">
+                            {%- render 'gmo-icon' -%}
+                        </div>
+                        <div class="inner-text m-auto" style="width: 90%" >
+                            GMO free
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="inner-image" style="width: 30%; margin: auto;">
+                            {%- render 'fda-certified-lab-icon' -%}
+                        </div>
+                        <div class="inner-text m-auto" style="width: 90%">
+                            FDA certified lab
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="inner-image" style="width: 30%; margin: auto;">
+                            {%- render 'made-in-usa-icon' -%}
+                        </div>
+                        <div class="inner-text m-auto" style="width: 90%">
+                            Made in USA
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+  
+</style>
